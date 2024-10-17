@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Portfólio de [Seu Nome], desenvolvedor web especializado em HTML, CSS e JavaScript.">
+    <meta name="keywords" content="Desenvolvedor Web, Portfólio, HTML, CSS, JavaScript, [Cidade], [País]">
+
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Biblioteca AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Script EmailJS -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Botão para alternar tema -->
+    <button id="toggle-theme">
+        <img src="icons/moon.svg" alt="Alternar Tema">
+    </button>
+
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Principal -->
+    <section id="inicio" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Bem-vindo ao <span>Meu Portfólio</span></h1>
+            <p>Desenvolvedor Web | Designer Gráfico | Criador de Conteúdo</p>
+            <a href="#projetos" class="btn">Ver Projetos</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="sobre">
+        <h2 data-aos="fade-up">Sobre Mim</h2>
+        <div class="sobre-content" data-aos="fade-up">
+            <img src="meuperfil.jpg" alt="Foto de [Seu Nome]">
+            <p>Olá! Eu sou <strong>[Seu Nome]</strong>, um desenvolvedor web apaixonado por criar experiências incríveis na web. Com expertise em HTML, CSS e JavaScript, busco constantemente aprimorar minhas habilidades e aprender novas tecnologias.</p>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projetos">
+        <h2 data-aos="fade-up">Meus Projetos</h2>
+
+        <!-- Filtro de Projetos -->
+        <div class="filtro-projetos" data-aos="fade-up">
+            <button data-filter="todos" class="btn active">Todos</button>
+            <button data-filter="web" class="btn">Web</button>
+            <button data-filter="design" class="btn">Design</button>
+        </div>
+
+        <!-- Grid de Projetos -->
+        <div class="projetos-grid">
+            <!-- Projeto 1 -->
+            <div class="projeto-card web" data-aos="fade-up">
+                <div class="projeto-imagem" style="background-image: url('projetos/projeto1.jpg');"></div>
+                <div class="projeto-info">
+                    <h3>Projeto 1</h3>
+                    <p>Descrição breve do projeto.</p>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            <!-- Projeto 2 -->
+            <div class="projeto-card design" data-aos="fade-up">
+                <div class="projeto-imagem" style="background-image: url('projetos/projeto2.jpg');"></div>
+                <div class="projeto-info">
+                    <h3>Projeto 2</h3>
+                    <p>Descrição breve do projeto.</p>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            <!-- Projeto 3 -->
+            <div class="projeto-card web" data-aos="fade-up">
+                <div class="projeto-imagem" style="background-image: url('projetos/projeto3.jpg');"></div>
+                <div class="projeto-info">
+                    <h3>Projeto 3</h3>
+                    <p>Descrição breve do projeto.</p>
+                    <a href="#" class="btn">Ver Detalhes</a>
+                </div>
+            </div>
+            <!-- Adicione mais projetos conforme necessário -->
+        </div>
+    </section>
+
+    <!-- Seção Depoimentos -->
+    <section id="depoimentos">
+        <h2 data-aos="fade-up">O que dizem sobre mim</h2>
+        <div class="depoimentos-container">
+            <div class="depoimento" data-aos="fade-up">
+                <p>"Profissional excelente! Entregou o projeto antes do prazo e superou as expectativas."</p>
+                <h4>- Cliente Satisfeito</h4>
+            </div>
+            <!-- Adicione mais depoimentos -->
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato">
+        <h2 data-aos="fade-up">Entre em Contato</h2>
+        <p data-aos="fade-up">Se você deseja colaborar ou apenas dizer olá, sinta-se à vontade para me enviar uma mensagem.</p>
+        <!-- Formulário de Contato -->
+        <form id="contact-form" data-aos="fade-up">
+            <input type="text" name="nome" placeholder="Seu Nome" required>
+            <input type="email" name="email" placeholder="Seu Email" required>
+            <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
+            <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+        <!-- Ícones de redes sociais -->
+        <div class="redes-sociais" data-aos="fade-up">
+            <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+            <a href="#"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
+            <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2023 [Seu Nome]. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão para voltar ao topo -->
+    <button id="back-to-top">
+        <img src="icons/up-arrow.svg" alt="Voltar ao Topo">
+    </button>
+
+    <!-- Script JavaScript -->
+    <script src="code.js"></script>
+
+    <!-- Biblioteca AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // duração da animação
+            easing: 'ease-in-out', // tipo de easing
+            once: true // anima apenas uma vez
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <!-- Substitua 'UA-XXXXXXXXX-X' pelo seu ID do Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-XXXXXXXXX-X');
+    </script>
+</body>
+</html>
