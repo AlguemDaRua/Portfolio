@@ -41,7 +41,7 @@ body {
     color: var(--cor-texto);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color 1.2s ease, color 1.2s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .container {
@@ -128,8 +128,8 @@ section {
     to { transform: rotate(360deg); }
 }
 
-/* Overlay para transição de tema */
-.theme-transition-overlay {
+/* Overlay para transição de tema com efeito de onda */
+.theme-wave-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -137,14 +137,13 @@ section {
     height: 100%;
     background: var(--cor-fundo);
     z-index: 9998;
-    opacity: 0;
+    clip-path: circle(0% at var(--pos-x, 50%) var(--pos-y, 50%));
+    transition: clip-path 1.2s ease-in-out;
     pointer-events: none;
-    transition: opacity 1.2s ease-in-out;
 }
 
-.theme-transition-overlay.active {
-    opacity: 1;
-    pointer-events: all;
+.theme-wave-overlay.active {
+    clip-path: circle(150% at var(--pos-x) var(--pos-y));
 }
 
 /* Header */
@@ -176,12 +175,11 @@ nav {
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
-    position: relative;
 }
 
 /* Logo com efeito de brilho (sem sublinhado) */
 .logo {
-    flex: 1;
+    flex: 0 0 auto;
 }
 
 .logo a {
@@ -201,7 +199,7 @@ nav {
 
 /* Menu central */
 .nav-center {
-    flex: 2;
+    flex: 1;
     display: flex;
     justify-content: center;
 }
@@ -210,6 +208,8 @@ nav ul {
     display: flex;
     gap: 30px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav li {
@@ -241,9 +241,7 @@ nav a:hover::after {
 
 /* Botão tema à direita */
 .nav-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+    flex: 0 0 auto;
 }
 
 #toggle-theme {
@@ -321,10 +319,12 @@ nav a:hover::after {
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
+    margin: 0;
+    padding: 0;
 }
 
 .mobile-menu li {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .mobile-menu a {

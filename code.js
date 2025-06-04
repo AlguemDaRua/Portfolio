@@ -31,33 +31,38 @@ function applySavedTheme() {
     }
 }
 
-// Transição de tema com efeito de cortina
+// Transição de tema com efeito de onda
 function toggleTheme(e) {
     const button = e.currentTarget;
-    const themeOverlay = document.querySelector('.theme-transition-overlay');
+    const rect = button.getBoundingClientRect();
+    // Posição do centro do botão
+    const x = rect.left + rect.width/2;
+    const y = rect.top + rect.height/2;
+    const overlay = document.querySelector('.theme-wave-overlay');
+    
+    // Obter o tema que será ativado (o oposto do atual)
     const isDarkMode = document.body.classList.contains('dark-mode');
+    const newTheme = isDarkMode ? 'light' : 'dark';
     
-    // Configurar overlay com a cor do tema atual
-    themeOverlay.style.background = isDarkMode ? '#f8f9fa' : '#121212';
-    themeOverlay.style.opacity = '0';
+    // Definir a cor de fundo do overlay para a cor de fundo do novo tema
+    overlay.style.background = newTheme === 'dark' ? '#121212' : '#f8f9fa';
     
-    // Ativar overlay
-    themeOverlay.classList.add('active');
+    // Definir a posição de origem
+    overlay.style.setProperty('--pos-x', `${x}px`);
+    overlay.style.setProperty('--pos-y', `${y}px`);
     
-    // Aumentar gradualmente a opacidade (fechar cortina)
+    // Iniciar a animação
+    overlay.classList.add('active');
+    
+    // Quando a animação terminar, mudar o tema
     setTimeout(() => {
-        themeOverlay.style.opacity = '1';
-    }, 10);
-    
-    // Após 600ms (metade da animação), mudar o tema
-    setTimeout(() => {
+        // Mudar o tema
         document.body.classList.toggle('dark-mode');
-        const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
+        localStorage.setItem('theme', newTheme);
         
         // Atualizar ícone do botão
         const themeIcon = button.querySelector('img');
-        if (theme === 'dark') {
+        if (newTheme === 'dark') {
             themeIcon.src = 'icons/sun.svg';
             themeIcon.alt = 'Alternar para modo claro';
         } else {
@@ -65,17 +70,11 @@ function toggleTheme(e) {
             themeIcon.alt = 'Alternar para modo escuro';
         }
         
-        // Mudar a cor do overlay para o novo tema
-        themeOverlay.style.background = theme === 'dark' ? '#121212' : '#f8f9fa';
-        
-        // Diminuir gradualmente a opacidade (abrir cortina)
+        // Remover a classe active após um pequeno atraso para dar tempo de transição
         setTimeout(() => {
-            themeOverlay.style.opacity = '0';
-            setTimeout(() => {
-                themeOverlay.classList.remove('active');
-            }, 600);
-        }, 600);
-    }, 600);
+            overlay.classList.remove('active');
+        }, 100);
+    }, 1200); // Tempo da animação
 }
 
 // Inicializar
@@ -136,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fechar menu ao clicar nos links
-    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
