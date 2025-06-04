@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Portfólio Profissional</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -52,12 +52,16 @@
                 
                 <!-- Botão tema à direita -->
                 <div class="nav-right">
+                    <div class="location-info">
+                        <img src="icons/location.svg" alt="Localização" id="location-icon">
+                        <span id="location-text">Carregando...</span>
+                    </div>
                     <button id="toggle-theme" aria-label="Alternar tema">
                         <img src="icons/moon.svg" alt="Ícone tema">
                     </button>
                 </div>
                 
-                <!-- Menu hamburguer para mobile -->
+                <!-- Menu hamburguer para mobile (só visível em mobile) -->
                 <button class="menu-toggle" aria-label="Abrir menu">
                     <span></span>
                     <span></span>
@@ -88,7 +92,7 @@
             <h2 data-aos="fade-up">Sobre Mim</h2>
             <div class="sobre-content" data-aos="fade-up">
                 <div class="profile-image">
-                    <img src="meuperfil.jpg" alt="Foto de Azam Usman">
+                    <img src="images/meuperfil.jpg" alt="Foto de Azam Usman">
                 </div>
                 <div class="bio">
                     <p>Saudações! Sou <strong>Azam Usman</strong>, profissional especializado em desenvolvimento de software com mais de 5 anos de experiência. Minha paixão é criar soluções digitais eficientes que resolvem problemas reais.</p>
@@ -123,7 +127,7 @@
             <div class="projetos-grid">
                 <!-- Projeto 1 -->
                 <div class="projeto-card web" data-aos="fade-up">
-                    <div class="projeto-imagem" style="background-image: url('projetos/web1.jpg');"></div>
+                    <div class="projeto-imagem" style="background-image: url('images/projetos/web1.jpg');"></div>
                     <div class="projeto-info">
                         <span class="categoria">Desenvolvimento Web</span>
                         <h3>Plataforma E-commerce</h3>
@@ -139,7 +143,7 @@
                 
                 <!-- Projeto 2 -->
                 <div class="projeto-card mobile" data-aos="fade-up">
-                    <div class="projeto-imagem" style="background-image: url('projetos/mobile1.jpg');"></div>
+                    <div class="projeto-imagem" style="background-image: url('images/projetos/mobile1.jpg');"></div>
                     <div class="projeto-info">
                         <span class="categoria">Mobile</span>
                         <h3>Aplicativo de Saúde</h3>
@@ -155,7 +159,7 @@
                 
                 <!-- Projeto 3 -->
                 <div class="projeto-card backend" data-aos="fade-up">
-                    <div class="projeto-imagem" style="background-image: url('projetos/backend1.jpg');"></div>
+                    <div class="projeto-imagem" style="background-image: url('images/projetos/backend1.jpg');"></div>
                     <div class="projeto-info">
                         <span class="categoria">Backend</span>
                         <h3>Sistema de Autenticação</h3>
@@ -245,25 +249,59 @@
         </svg>
     </button>
 
+    <!-- Elemento para as partículas -->
+    <div id="particles-js"></div>
+
     <!-- Scripts -->
-    <script src="code.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Inicializar AOS
         AOS.init({
             duration: 800,
             easing: 'ease-out-quart',
             once: true,
             mirror: false
         });
-    </script>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXXXXXX-X');
+
+        // Inicializar particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#00c6ff" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#00c6ff",
+                            opacity: 0.4,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out"
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "grab" },
+                            onclick: { enable: true, mode: "push" },
+                            resize: true
+                        }
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
