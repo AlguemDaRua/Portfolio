@@ -138,7 +138,7 @@ section {
     background: var(--cor-fundo);
     z-index: 9998;
     clip-path: circle(0% at var(--pos-x, 50%) var(--pos-y, 50%));
-    transition: clip-path 1.2s ease-in-out;
+    transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
 }
 
@@ -242,6 +242,22 @@ nav a:hover::after {
 /* Botão tema à direita */
 .nav-right {
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
+}
+
+.location-info img {
+    width: 18px;
+    height: 18px;
 }
 
 #toggle-theme {
@@ -269,9 +285,9 @@ nav a:hover::after {
     height: 22px;
 }
 
-/* Menu hamburguer */
+/* Menu hamburguer - só visível em mobile */
 .menu-toggle {
-    display: none;
+    display: none; /* Escondido por padrão */
     background: transparent;
     border: none;
     width: 40px;
@@ -305,8 +321,8 @@ nav a:hover::after {
     z-index: 1001;
     transition: right 0.4s ease;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -316,8 +332,8 @@ nav a:hover::after {
 
 .mobile-menu ul {
     list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
     margin: 0;
     padding: 0;
@@ -340,6 +356,17 @@ nav a:hover::after {
 
 .mobile-menu a:hover {
     background: rgba(0, 198, 255, 0.1);
+}
+
+.location-info.mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
 }
 
 .mobile-theme-toggle {
@@ -813,6 +840,17 @@ footer p:first-child {
     }
 }
 
+/* Efeito de partículas */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* Responsividade */
 @media (max-width: 992px) {
     .sobre-content {
@@ -830,16 +868,16 @@ footer p:first-child {
         justify-content: center;
     }
 
-    .nav-center {
+    .nav-center, .nav-right {
         display: none;
     }
 
     .menu-toggle {
-        display: flex;
+        display: flex; /* Visível apenas em mobile */
     }
 
-    .nav-right {
-        display: none;
+    .nav-container {
+        grid-template-columns: auto 1fr auto;
     }
 }
 
