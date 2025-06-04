@@ -7,12 +7,12 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Meta Tags SEO melhoradas -->
-    <meta name="description" content="Portfólio profissional de [Seu Nome], especialista em desenvolvimento web e design de interfaces com expertise em HTML, CSS e JavaScript.">
-    <meta name="keywords" content="Desenvolvedor Web, Portfólio, Front-end, UI/UX Design, HTML, CSS, JavaScript, Moçambique">
-    <meta name="author" content="[Seu Nome]">
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile">
+    <meta name="keywords" content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique">
+    <meta name="author" content="Azam Usman">
     
-    <!-- Fontes otimizadas -->
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- Biblioteca AOS -->
@@ -22,34 +22,56 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 </head>
 <body>
+    <!-- Overlay para transição de tema -->
+    <div class="theme-transition-overlay"></div>
+
     <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Botão tema -->
-    <button id="toggle-theme" aria-label="Alternar tema">
-        <img src="icons/moon.svg" alt="Ícone tema">
-    </button>
-
     <!-- Cabeçalho -->
     <header>
         <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projectos</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contacto</a></li>
-            </ul>
+            <div class="nav-container">
+                <!-- Logo à esquerda -->
+                <div class="logo">
+                    <a href="#inicio">Azam Usman</a>
+                </div>
+                
+                <!-- Menu central -->
+                <div class="nav-center">
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#projetos">Projectos</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Botão tema à direita -->
+                <div class="nav-right">
+                    <button id="toggle-theme" aria-label="Alternar tema">
+                        <img src="icons/moon.svg" alt="Ícone tema">
+                    </button>
+                </div>
+                
+                <!-- Menu hamburguer para mobile -->
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-content" data-aos="fade-up">
-            <h1>Bem-vindo ao Meu Portfólio</h1>
-            <p>Desenvolvedor Web | Designer de Interfaces | Especialista em Experiência do Usuário</p>
+            <h1>Transformando Ideias em Realidade Digital</h1>
+            <p>Desenvolvedor Full Stack | Especialista em Soluções Tecnológicas</p>
             <a href="#projetos" class="btn">Explorar Projectos</a>
         </div>
         
@@ -66,19 +88,19 @@
             <h2 data-aos="fade-up">Sobre Mim</h2>
             <div class="sobre-content" data-aos="fade-up">
                 <div class="profile-image">
-                    <img src="meuperfil.jpg" alt="Foto de [Seu Nome]">
+                    <img src="meuperfil.jpg" alt="Foto de Azam Usman">
                 </div>
                 <div class="bio">
-                    <p>Saudações! Sou <strong>[Seu Nome]</strong>, profissional especializado em desenvolvimento web e design de interfaces. Com formação sólida e experiência comprovada, dedico-me à criação de soluções digitais que conjugam estética refinada e funcionalidade exemplar.</p>
+                    <p>Saudações! Sou <strong>Azam Usman</strong>, profissional especializado em desenvolvimento de software com mais de 5 anos de experiência. Minha paixão é criar soluções digitais eficientes que resolvem problemas reais.</p>
                     
                     <div class="skills">
                         <h3>Competências Técnicas</h3>
                         <ul>
-                            <li>Desenvolvimento Front-end (HTML5, CSS3, JavaScript)</li>
-                            <li>Frameworks Modernos (React, Vue.js)</li>
-                            <li>Design Responsivo e Adaptativo</li>
-                            <li>Experiência do Usuário (UX) e Interface (UI)</li>
-                            <li>Optimização para Motores de Busca (SEO)</li>
+                            <li>Desenvolvimento Web (HTML5, CSS3, JavaScript, React)</li>
+                            <li>Desenvolvimento Mobile com Flutter</li>
+                            <li>Java para aplicações empresariais</li>
+                            <li>Python para análise de dados e automação</li>
+                            <li>Golang para sistemas de alto desempenho</li>
                         </ul>
                     </div>
                 </div>
@@ -93,19 +115,19 @@
             
             <div class="filtro-projetos" data-aos="fade-up">
                 <button data-filter="todos" class="btn active">Todos</button>
-                <button data-filter="web" class="btn">Desenvolvimento Web</button>
-                <button data-filter="design" class="btn">Design de Interface</button>
-                <button data-filter="aplicativo" class="btn">Aplicativos</button>
+                <button data-filter="web" class="btn">Web</button>
+                <button data-filter="mobile" class="btn">Mobile</button>
+                <button data-filter="backend" class="btn">Backend</button>
             </div>
             
             <div class="projetos-grid">
                 <!-- Projeto 1 -->
                 <div class="projeto-card web" data-aos="fade-up">
-                    <div class="projeto-imagem" style="background-image: url('projetos/projeto1.jpg');"></div>
+                    <div class="projeto-imagem" style="background-image: url('projetos/web1.jpg');"></div>
                     <div class="projeto-info">
                         <span class="categoria">Desenvolvimento Web</span>
                         <h3>Plataforma E-commerce</h3>
-                        <p>Solução completa de comércio electrónico com integração de pagamentos e gestão de inventário.</p>
+                        <p>Solução completa de comércio electrónico com carrinho de compras e integração de pagamentos.</p>
                         <div class="tecnologias">
                             <span>React</span>
                             <span>Node.js</span>
@@ -116,22 +138,36 @@
                 </div>
                 
                 <!-- Projeto 2 -->
-                <div class="projeto-card design" data-aos="fade-up">
-                    <div class="projeto-imagem" style="background-image: url('projetos/projeto2.jpg');"></div>
+                <div class="projeto-card mobile" data-aos="fade-up">
+                    <div class="projeto-imagem" style="background-image: url('projetos/mobile1.jpg');"></div>
                     <div class="projeto-info">
-                        <span class="categoria">Design de Interface</span>
-                        <h3>Sistema de Gestão</h3>
-                        <p>Interface moderna para sistema de gestão empresarial com foco em experiência do usuário.</p>
+                        <span class="categoria">Mobile</span>
+                        <h3>Aplicativo de Saúde</h3>
+                        <p>Aplicativo móvel para monitoramento de saúde e condicionamento físico.</p>
                         <div class="tecnologias">
-                            <span>Figma</span>
-                            <span>Adobe XD</span>
-                            <span>UI Design</span>
+                            <span>Flutter</span>
+                            <span>Firebase</span>
+                            <span>Dart</span>
                         </div>
                         <a href="#" class="btn">Ver Detalhes</a>
                     </div>
                 </div>
                 
-                <!-- Mais projetos... -->
+                <!-- Projeto 3 -->
+                <div class="projeto-card backend" data-aos="fade-up">
+                    <div class="projeto-imagem" style="background-image: url('projetos/backend1.jpg');"></div>
+                    <div class="projeto-info">
+                        <span class="categoria">Backend</span>
+                        <h3>Sistema de Autenticação</h3>
+                        <p>Sistema seguro de autenticação e autorização com múltiplos fatores.</p>
+                        <div class="tecnologias">
+                            <span>Golang</span>
+                            <span>JWT</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <a href="#" class="btn">Ver Detalhes</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -144,14 +180,21 @@
             <div class="depoimentos-container">
                 <div class="depoimento" data-aos="fade-up">
                     <div class="quote">"</div>
-                    <p>Profissional excepcional que demonstrou elevada competência técnica e capacidade de inovação. O projecto foi concluído antes do prazo estabelecido, superando as expectativas iniciais."</p>
+                    <p>"Profissional excepcional que demonstrou elevada competência técnica e capacidade de inovação. O projecto foi concluído antes do prazo estabelecido, superando as expectativas iniciais."</p>
                     <div class="cliente">
                         <h4>Carlos Mendes</h4>
                         <span>Director Técnico, TechSolutions Lda</span>
                     </div>
                 </div>
                 
-                <!-- Mais depoimentos... -->
+                <div class="depoimento" data-aos="fade-up">
+                    <div class="quote">"</div>
+                    <p>"Azam entregou uma solução móvel que transformou completamente a experiência dos nossos clientes. Sua atenção aos detalhes e conhecimento técnico são impressionantes."</p>
+                    <div class="cliente">
+                        <h4>Ana Silva</h4>
+                        <span>CEO, HealthApp Moçambique</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -160,7 +203,7 @@
     <section id="contato">
         <div class="container">
             <h2 data-aos="fade-up">Contacto</h2>
-            <p data-aos="fade-up">Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem através do formulário abaixo.</p>
+            <p data-aos="fade-up">Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.</p>
             
             <form id="contact-form" data-aos="fade-up">
                 <div class="form-group">
@@ -182,7 +225,7 @@
                 <a href="#" aria-label="Facebook"><img src="icons/facebook.svg" alt="Facebook"></a>
                 <a href="#" aria-label="Twitter"><img src="icons/twitter.svg" alt="Twitter"></a>
                 <a href="#" aria-label="LinkedIn"><img src="icons/linkedin.svg" alt="LinkedIn"></a>
-                <a href="#" aria-label="Instagram"><img src="icons/instagram.svg" alt="Instagram"></a>
+                <a href="#" aria-label="GitHub"><img src="icons/github.svg" alt="GitHub"></a>
             </div>
         </div>
     </section>
@@ -190,8 +233,8 @@
     <!-- Rodapé -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 [Seu Nome]. Todos os direitos reservados.</p>
-            <p>Desenvolvido com inovação e excelência técnica.</p>
+            <p>&copy; 2023 Azam Usman. Todos os direitos reservados.</p>
+            <p>Desenvolvido com paixão e excelência técnica.</p>
         </div>
     </footer>
 
