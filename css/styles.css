@@ -848,7 +848,17 @@ footer p:first-child {
     width: 100%;
     height: 100%;
     z-index: -1;
-    pointer-events: none;
+    background: transparent !important;
+}
+
+/* Aumentar contraste no modo escuro */
+body.dark-mode #particles-js .particles-js-canvas-el {
+    background-color: transparent !important;
+}
+
+.hero, section, footer {
+    position: relative;
+    z-index: 1;
 }
 
 /* Responsividade */

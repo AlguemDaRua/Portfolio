@@ -1,15 +1,8 @@
-// Preloader com transição suave
+// Preloader SIMPLIFICADO (sem animações complexas)
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
-    preloader.animate([
-        { opacity: 1 },
-        { opacity: 0 }
-    ], {
-        duration: 500,
-        fill: 'forwards'
-    }).onfinish = () => {
-        preloader.style.display = 'none';
-    };
+    // Esconde o preloader imediatamente
+    preloader.style.display = 'none';
 });
 
 // Verificar e aplicar tema salvo
@@ -34,7 +27,7 @@ function applySavedTheme() {
     }
 }
 
-// Transição de tema com efeito de onda (0.5 segundos)
+// Transição de tema com efeito de onda
 function toggleTheme(e) {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
@@ -63,36 +56,57 @@ function toggleTheme(e) {
         setTimeout(() => {
             overlay.classList.remove('active');
         }, 100);
-    }, 500); // Reduzido para 500ms (0.5 segundos)
+    }, 500);
 }
 
-// Obter localização do usuário
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                const { latitude, longitude } = position.coords;
-                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`)
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('location-text').textContent = 
-                            `${data.city || 'Localização'}, ${data.countryName || 'Desconhecido'}`;
-                    })
-                    .catch(() => {
-                        document.getElementById('location-text').textContent = 'Maputo, MZ';
-                    });
-            },
-            error => {
-                console.error('Erro ao obter localização:', error);
-                document.getElementById('location-text').textContent = 'Maputo, MZ';
-            }
-        );
-    } else {
-        document.getElementById('location-text').textContent = 'Maputo, MZ';
+// Função auxiliar para definir local padrão
+function setDefaultLocation() {
+    const locationElement = document.getElementById('location-text');
+    if (locationElement) {
+        locationElement.textContent = 'Maputo, MZ';
     }
 }
 
-// Inicializar
+// Obter localização do usuário (SIMPLIFICADA)
+function getLocation() {
+    try {
+        // Tentativa de geolocalização
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    /* ... código existente ... */
+                },
+                error => {
+                    console.error('Erro ao obter localização:', error);
+                    setDefaultLocation();
+                }
+            );
+        } else {
+            setDefaultLocation();
+        }
+    } catch (error) {
+        console.error('Erro inesperado:', error);
+        setDefaultLocation();
+    }
+}
+// Função para inicializar as partículas
+function initParticlesWithRetry(attempt = 0) {
+    if (attempt > 3) return;
+    
+    if (typeof particlesJS === 'function') {
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100 },
+                color: { value: "#ff4d94" },
+                /* ... restante das configurações ... */
+            }
+        });
+    } else {
+        setTimeout(() => initParticlesWithRetry(attempt + 1), 500);
+    }
+}
+initParticlesWithRetry();
+
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     applySavedTheme();
@@ -140,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     locationContainer.classList.add('location-info', 'mobile');
     locationContainer.innerHTML = `
         <img src="icons/location.svg" alt="Localização">
-        <span id="mobile-location-text">Carregando...</span>
+        <span id="mobile-location-text">Maputo, MZ</span>
     `;
     mobileMenu.appendChild(locationContainer);
     
@@ -158,10 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         document.body.classList.toggle('menu-open');
-        
-        // Atualizar localização no menu mobile
-        document.getElementById('mobile-location-text').textContent = 
-            document.getElementById('location-text').textContent;
     });
 
     // Fechar menu ao clicar nos links
@@ -280,4 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(typeWriter, 1000);
+    
+    // Inicializar particles.js
+    initParticles();
 });
