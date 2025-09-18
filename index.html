@@ -9,11 +9,11 @@
 
     <meta
       name="description"
-      content="Azam Usman | Desenvolvedor Full Stack especializado em soluções web e mobile."
+      content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile"
     />
     <meta
       name="keywords"
-      content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique, Mocambique, Azam Usman, Azam, AlguemDaRua, Dart, Mobile, Frontend, Backend, Full Stack"
+      content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique"
     />
     <meta name="author" content="Azam Usman" />
 
@@ -33,9 +33,7 @@
     ></script>
     <script type="text/javascript">
       (function () {
-        emailjs.init({
-          publicKey: "Z5xTfBpKkerQgQ8Uc",
-        });
+        emailjs.init('SEU_PUBLIC_KEY');
       })();
     </script>
   </head>
@@ -45,313 +43,360 @@
     </div>
 
     <header>
-      <nav>
-        <div class="nav-container">
-          <div class="logo">
-            <a href="#inicio">Azam Usman</a>
-          </div>
-          <div class="nav-center">
+      <nav class="nav-container container">
+        <a href="#hero" class="logo">Azam Usman</a>
+
+        <div class="nav-right">
+          <button id="toggle-theme" aria-label="Alternar tema">
+            <img src="icons/moon.svg" alt="Ícone de Lua" />
+          </button>
+        </div>
+
+        <button class="menu-toggle" id="mobile-menu-toggle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </button>
+        <div class="mobile-menu" id="mobile-menu">
+          <nav class="nav-center">
             <ul>
-              <li><a href="#inicio">Início</a></li>
+              <li><a href="#hero">Início</a></li>
               <li><a href="#sobre">Sobre</a></li>
-              <li><a href="#projetos">Projectos</a></li>
               <li><a href="#habilidades">Habilidades</a></li>
-              <li><a href="#contato">Contacto</a></li>
+              <li><a href="#portfolio">Portfólio</a></li>
+              <li><a href="#depoimentos">Depoimentos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
             </ul>
-          </div>
-          <div class="nav-right">
-            <button id="toggle-theme" aria-label="Alternar tema">
-              <img src="icons/moon.svg" alt="Ícone tema" />
-            </button>
-          </div>
-          <button class="menu-toggle" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
+          </nav>
+
+          <button id="mobile-toggle-theme" aria-label="Alternar tema">
+            <img src="icons/moon.svg" alt="Ícone de Lua" />
           </button>
         </div>
       </nav>
     </header>
 
-    <section id="inicio" class="hero">
-      <div class="hero-content" data-aos="fade-up">
-        <h1>Transformando Ideias em Realidade Digital</h1>
-        <p>Desenvolvedor Full Stack e Mobile | Especialista em Soluções Tecnológicas</p>
-        <a href="#projetos" class="btn">Explorar Projectos</a>
-      </div>
-      <div class="scroll-indicator">
-        <div class="mouse">
-          <div class="wheel"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="sobre">
-      <div class="container">
-        <h2 data-aos="fade-up">Sobre Mim</h2>
-        <div class="sobre-content" data-aos="fade-up">
-          <div class="profile-image">
-            <img src="/images/meuperfil.jpg" alt="Foto de Azam Usman" />
-          </div>
-          <div class="bio">
-            <p>
-              Saudações! Sou <strong>Azam Usman</strong>, Estudante de
-              Engenharia Informatica e de Telecomunicação e desenvolvedor full
-              stack especializado em desenvolvimento de software com mais de 5
-              anos de experiência. Minha paixão é criar soluções digitais
-              eficientes que resolvem problemas reais.
+    <main>
+      <section id="hero" class="hero" data-aos="fade-up">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Bem-vindo ao Meu Portfólio</h1>
+            <p class="hero-subtitle">
+              Sou Azam Usman, Desenvolvedor Full Stack apaixonado por criar
+              soluções web e mobile inovadoras.
             </p>
-            <div class="skills">
-              <h3>Competências Técnicas</h3>
+            <a href="#contacto" class="btn">Contratar</a>
+            <a href="#portfolio" class="btn btn-outline">Ver Projetos</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" class="section" data-aos="fade-up">
+        <div class="container">
+          <h2 class="section-title">Sobre Mim</h2>
+          <div class="sobre-content">
+            <div class="sobre-imagem">
+              <img
+                src="images/profile.jpg"
+                alt="Foto de perfil de Azam Usman"
+              />
+            </div>
+            <div class="sobre-texto">
+              <p>
+                Sou um desenvolvedor Full Stack com 2 anos de experiência em
+                construir aplicações web e mobile. Tenho um domínio sólido em
+                tecnologias como **Java**, **Python**, **Golang** e
+                **Flutter**. A minha paixão reside em traduzir conceitos
+                complexos em soluções elegantes e funcionais.
+              </p>
+              <p>
+                Acredito que a tecnologia deve ser acessível e intuitiva, e
+                esforço-me por criar experiências de utilizador que sejam não
+                apenas bonitas, mas também eficientes e impactantes. Estou
+                sempre à procura de novos desafios e oportunidades para
+                aprender e crescer.
+              </p>
+              <a href="#contacto" class="btn btn-primario">Vamos Conversar</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="habilidades" class="section" data-aos="fade-up">
+        <div class="container">
+          <h2 class="section-title">Minhas Habilidades</h2>
+          <div class="habilidades-grid">
+            <div class="skills" data-aos="fade-right">
+              <h3>Frontend</h3>
               <ul>
-                <li>Desenvolvimento Web (HTML5, CSS3, JavaScript)</li>
-                <li>Desenvolvimento Mobile com Flutter</li>
-                <li>Java para aplicações empresariais</li>
-                <li>Python para análise de dados e automação</li>
-                <li>Golang para sistemas de alto desempenho</li>
+                <li>
+                  <img src="icons/html.svg" alt="HTML5" />
+                  <span>HTML5</span>
+                </li>
+                <li>
+                  <img src="icons/css.svg" alt="CSS3" />
+                  <span>CSS3</span>
+                </li>
+                <li>
+                  <img src="icons/js.svg" alt="JavaScript" />
+                  <span>JavaScript</span>
+                </li>
+                <li>
+                  <img src="icons/react.svg" alt="React" />
+                  <span>React</span>
+                </li>
+                <li>
+                  <img src="icons/nextjs.svg" alt="Next.js" />
+                  <span>Next.js</span>
+                </li>
               </ul>
             </div>
-            <div class="cv-buttons">
-              <a href="CV-Azam-Usman.pdf" class="btn btn-secondary" target="_blank"
-                >Ver CV</a
-              >
-              <a href="CV-Azam-Usman.pdf" class="btn" download
-                >Baixar CV</a
-              >
+            <div class="skills" data-aos="fade-left">
+              <h3>Backend</h3>
+              <ul>
+                <li>
+                  <img src="icons/java.svg" alt="Java" />
+                  <span>Java</span>
+                </li>
+                <li>
+                  <img src="icons/python.svg" alt="Python" />
+                  <span>Python</span>
+                </li>
+                <li>
+                  <img src="icons/golang.svg" alt="Golang" />
+                  <span>Golang</span>
+                </li>
+                <li>
+                  <img src="icons/nodejs.svg" alt="Node.js" />
+                  <span>Node.js</span>
+                </li>
+                <li>
+                  <img src="icons/database.svg" alt="SQL" />
+                  <span>SQL</span>
+                </li>
+              </ul>
+            </div>
+            <div class="skills" data-aos="fade-right">
+              <h3>Mobile</h3>
+              <ul>
+                <li>
+                  <img src="icons/flutter.svg" alt="Flutter" />
+                  <span>Flutter</span>
+                </li>
+                <li>
+                  <img src="icons/dart.svg" alt="Dart" />
+                  <span>Dart</span>
+                </li>
+                <li>
+                  <img src="icons/android.svg" alt="Android (Java/Kotlin)" />
+                  <span>Android (Java/Kotlin)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="skills" data-aos="fade-left">
+              <h3>Ferramentas</h3>
+              <ul>
+                <li>
+                  <img src="icons/git.svg" alt="Git" />
+                  <span>Git</span>
+                </li>
+                <li>
+                  <img src="icons/docker.svg" alt="Docker" />
+                  <span>Docker</span>
+                </li>
+                <li>
+                  <img src="icons/aws.svg" alt="AWS" />
+                  <span>AWS</span>
+                </li>
+                <li>
+                  <img src="icons/figma.svg" alt="Figma" />
+                  <span>Figma</span>
+                </li>
+                <li>
+                  <img src="icons/vscode.svg" alt="VS Code" />
+                  <span>VS Code</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="projetos">
-      <div class="container">
-        <h2 data-aos="fade-up">Projectos Recentes</h2>
-        <div class="filtro-projetos" data-aos="fade-up">
-          <button class="filtro-btn active" data-filter="all">Todos</button>
-          <button class="filtro-btn" data-filter="web">Web</button>
-          <button class="filtro-btn" data-filter="mobile">Mobile</button>
-        </div>
-        <div class="projetos-grid" data-aos="fade-up">
-          <div class="projeto-card" data-category="web">
-            <img src="/images/pro-1.jpg" alt="Projecto Web 1" />
-            <div class="card-content">
-              <h3>Sistema de Gestão de Conteúdo</h3>
-              <p>
-                Plataforma web para gestão e publicação de artigos em tempo
-                real.
-              </p>
-              <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="1"
-                  >Ver Detalhes</a
-                >
-                <a href="#" aria-label="GitHub" class="btn-icon"
-                  ><img src="icons/github.svg" alt="GitHub"
-                /></a>
+      <section id="portfolio" class="section" data-aos="fade-up">
+        <div class="container">
+          <h2 class="section-title">Meus Projetos</h2>
+          <div class="filtro-projetos">
+            <button class="filtro-btn active" data-filter="all">Todos</button>
+            <button class="filtro-btn" data-filter="web">Web</button>
+            <button class="filtro-btn" data-filter="mobile">Mobile</button>
+          </div>
+          <div class="projetos-grid">
+            <div class="projeto-card" data-category="web" data-aos="fade-up">
+              <img
+                src="images/project1.jpg"
+                alt="Miniatura do projeto 1"
+                class="projeto-imagem"
+              />
+              <div class="projeto-info">
+                <h3>Loja de Compras Online</h3>
+                <p class="projeto-desc">
+                  Plataforma de e-commerce completa com carrinho, checkout e
+                  gestão de produtos.
+                </p>
+                <div class="projeto-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">MongoDB</span>
+                </div>
+                <button class="btn-detalhes" data-project-id="1">
+                  Ver Detalhes
+                </button>
               </div>
             </div>
-          </div>
 
-          <div class="projeto-card" data-category="mobile">
-            <img src="/images/pro-2.jpg" alt="Projecto Mobile 2" />
-            <div class="card-content">
-              <h3>App de Produtividade</h3>
-              <p>
-                Aplicação mobile desenvolvida em Flutter para organização
-                pessoal.
-              </p>
-              <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="2"
-                  >Ver Detalhes</a
-                >
-                <a href="#" aria-label="GitHub" class="btn-icon"
-                  ><img src="icons/github.svg" alt="GitHub"
-                /></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="projeto-card" data-category="web">
-            <img src="/images/pro-3.jpg" alt="Projecto Web 3" />
-            <div class="card-content">
-              <h3>E-commerce para Pequenas Empresas</h3>
-              <p>
-                Solução de loja online completa, do catálogo ao processamento de
-                pagamentos.
-              </p>
-              <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="3"
-                  >Ver Detalhes</a
-                >
-                <a href="#" aria-label="GitHub" class="btn-icon"
-                  ><img src="icons/github.svg" alt="GitHub"
-                /></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="projeto-card" data-category="mobile">
-            <img src="/images/pro-4.jpg" alt="Projecto Mobile 4" />
-            <div class="card-content">
-              <h3>App de Saúde e Fitness</h3>
-              <p>
-                Acompanhamento de exercícios e nutrição com metas personalizadas.
-              </p>
-              <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="4"
-                  >Ver Detalhes</a
-                >
-                <a href="#" aria-label="GitHub" class="btn-icon"
-                  ><img src="icons/github.svg" alt="GitHub"
-                /></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="projeto-card mobile" data-aos="fade-up">
             <div
-              class="projeto-imagem"
-              style="background-image: url('/images/projetos/parkwise.png')"
-            ></div>
-            <div class="projeto-info">
-              <span class="categoria">Mobile</span>
-              <h3>ParkWISE</h3>
-              <p>
-                Aplicativo móvel para monitoramento e gestao de estacionamento em tempo real.
-              </p>
-              <div class="tecnologias">
-                <span>Flutter</span>
-                <span>Firebase</span>
-                <span>Dart</span>
+              class="projeto-card"
+              data-category="mobile"
+              data-aos="fade-up"
+            >
+              <img
+                src="images/project2.jpg"
+                alt="Miniatura do projeto 2"
+                class="projeto-imagem"
+              />
+              <div class="projeto-info">
+                <h3>Aplicação de Gestão de Tarefas</h3>
+                <p class="projeto-desc">
+                  Aplicação móvel para organização pessoal com lembretes e
+                  listas de tarefas.
+                </p>
+                <div class="projeto-tags">
+                  <span class="tag">Flutter</span>
+                  <span class="tag">Dart</span>
+                  <span class="tag">Firebase</span>
+                </div>
+                <button class="btn-detalhes" data-project-id="2">
+                  Ver Detalhes
+                </button>
+              </div>
+            </div>
+
+            <div class="projeto-card" data-category="web" data-aos="fade-up">
+              <img
+                src="images/project3.jpg"
+                alt="Miniatura do projeto 3"
+                class="projeto-imagem"
+              />
+              <div class="projeto-info">
+                <h3>Dashboard de Análise de Dados</h3>
+                <p class="projeto-desc">
+                  Painel interativo para visualizar e analisar grandes conjuntos
+                  de dados.
+                </p>
+                <div class="projeto-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">D3.js</span>
+                </div>
+                <button class="btn-detalhes" data-project-id="3">
+                  Ver Detalhes
+                </button>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="projeto-card" data-category="web">
-            <img src="/images/pro-6.jpg" alt="Projecto Web 6" />
-            <div class="card-content">
-              <h3>Blog Pessoal Moderno</h3>
-              <p>
-                Blog minimalista e responsivo com sistema de comentários
-                integrado.
-              </p>
-              <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="6"
-                  >Ver Detalhes</a
-                >
-                <a href="#" aria-label="GitHub" class="btn-icon"
-                  ><img src="icons/github.svg" alt="GitHub"
-                /></a>
-              </div>
-            </div>
+      <section id="depoimentos" class="section" data-aos="fade-up">
+        <div class="container">
+          <h2 class="section-title">O Que Dizem de Mim</h2>
+          <div class="depoimento-card">
+            <p class="depoimento-texto">
+              "Azam é um profissional excecional, com uma capacidade única de
+              resolver problemas complexos. A sua dedicação e conhecimento
+              técnico foram cruciais para o sucesso do nosso projeto."
+            </p>
+            <p class="depoimento-autor">- João Silva, CEO da TechInov</p>
+          </div>
+          <div class="depoimento-card">
+            <p class="depoimento-texto">
+              "Trabalhar com o Azam foi uma experiência fantástica. Ele não só
+              entregou um produto de alta qualidade, como também contribuiu com
+              ideias inovadoras que superaram as nossas expectativas."
+            </p>
+            <p class="depoimento-autor">- Ana Gomes, Gerente de Produto</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="habilidades">
-      <div class="container">
-        <h2 data-aos="fade-up">Minhas Habilidades</h2>
-        <div class="habilidades-grid" data-aos="fade-up">
-          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="100">
-            <div class="habilidade-icon">
-              <img src="icons/html.svg" alt="HTML" />
-            </div>
-            <h3>HTML5</h3>
-          </div>
-          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="200">
-            <div class="habilidade-icon">
-              <img src="icons/css.svg" alt="CSS" />
-            </div>
-            <h3>CSS3</h3>
-          </div>
-          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="300">
-            <div class="habilidade-icon">
-              <img src="icons/js.svg" alt="JavaScript" />
-            </div>
-            <h3>JavaScript</h3>
-            <p>Lógica e interatividade</p>
-          </a>
+      <section id="contacto" class="section" data-aos="fade-up">
+        <div class="container">
+          <h2 class="section-title">Contacto</h2>
+          <p class="section-subtitle">
+            Estou à disposição para novos desafios. Envie-me uma mensagem e
+            vamos construir algo incrível juntos!
+          </p>
 
-          <a
-            href="https://flutter.dev/"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/flutter.svg" alt="Ícone Flutter" />
-            <h3>Flutter</h3>
-            <p>Desenvolvimento mobile</p>
-          </a>
-
-          <a href="https://golang.org/" target="_blank" class="habilidade-card">
-            <img src="icons/golang.svg" alt="Ícone Golang" />
-            <h3>Golang</h3>
-            <p>Servidores de alto desempenho</p>
-          </a>
-
-          <a
-            href="https://www.java.com/"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/java.svg" alt="Ícone Java" />
-            <h3>Java</h3>
-          </div>
-          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="600">
-            <div class="habilidade-icon">
-              <img src="icons/python.svg" alt="Python" />
+          <form id="contact-form" data-aos="fade-up">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Seu Nome"
+                required
+              />
             </div>
-            <h3>Python</h3>
-          </div>
-          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="700">
-            <div class="habilidade-icon">
-              <img src="icons/go.svg" alt="Golang" />
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu.email@exemplo.com"
+                required
+              />
             </div>
-            <h3>Golang</h3>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                placeholder="Sua Mensagem"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn">Enviar Mensagem</button>
+          </form>
+
+          <div class="redes-sociais" data-aos="fade-up">
+            <a href="#" aria-label="Facebook"
+              ><img src="icons/facebook.svg" alt="Facebook"
+            /></a>
+            <a href="#" aria-label="Twitter"
+              ><img src="icons/twitter.svg" alt="Twitter"
+            /></a>
+            <a href="#" aria-label="LinkedIn"
+              ><img src="icons/linkedin.svg" alt="LinkedIn"
+            /></a>
+            <a href="#" aria-label="GitHub"
+              ><img src="icons/github.svg" alt="GitHub"
+            /></a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="contato">
-      <div class="container">
-        <h2 data-aos="fade-up">Entre em Contacto</h2>
-        <form id="contact-form" data-aos="fade-up">
-          <div class="form-group">
-            <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" name="nome" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Endereço de Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="mensagem">Mensagem</label>
-            <textarea
-              id="mensagem"
-              name="mensagem"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn">Enviar Mensagem</button>
-        </form>
-        <div class="redes-sociais" data-aos="fade-up">
-          <a href="#" aria-label="Facebook"
-            ><img src="icons/facebook.svg" alt="Facebook"
-          /></a>
-          <a href="#" aria-label="Twitter"
-            ><img src="icons/twitter.svg" alt="Twitter"
-          /></a>
-          <a href="#" aria-label="LinkedIn"
-            ><img src="icons/linkedin.svg" alt="LinkedIn"
-          /></a>
-          <a href="#" aria-label="GitHub"
-            ><img src="icons/github.svg" alt="GitHub"
-          /></a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer>
       <div class="container">
@@ -370,14 +415,44 @@
       </svg>
     </button>
 
-    <script src="js/main.js"></script>
+    <div id="particles-js"></div>
+
+    <div id="project-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Fechar"></button>
+        <div class="modal-body">
+          <img
+            id="modal-image"
+            src=""
+            alt="Imagem do projeto"
+            class="modal-imagem"
+          />
+          <div class="modal-text">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <h4>Tecnologias Utilizadas:</h4>
+            <div id="modal-tags" class="projeto-tags"></div>
+            <a
+              id="modal-link"
+              href="#"
+              target="_blank"
+              class="btn btn-detalhes-link"
+              >Ver Projeto Online</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="js/main.js"></script>
     <script>
       AOS.init({
-        duration: 800,
+        duration: 1000,
+        easing: 'ease-in-out',
         once: true,
       });
     </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
