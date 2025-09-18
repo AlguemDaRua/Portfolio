@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Meta Tags SEO -->
     <meta
       name="description"
       content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile"
@@ -18,19 +17,16 @@
     />
     <meta name="author" content="Azam Usman" />
 
-    <!-- Fontes -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Biblioteca AOS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
     />
 
-    <!--EMAIL-->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
@@ -38,52 +34,41 @@
     <script type="text/javascript">
       (function () {
         emailjs.init({
-          publicKey: "YOUR_PUBLIC_KEY", // Obtenha em: https://dashboard.emailjs.com/admin
+          publicKey: "0I9u8gF_tTbJuC-EI",
         });
       })();
     </script>
   </head>
   <body>
-    <!-- Overlay para transição de tema com efeito de onda -->
     <div class="theme-wave-overlay"></div>
 
-    <!-- Preloader (SIMPLIFICADO) -->
     <div id="preloader">
       <div class="spinner"></div>
     </div>
 
-    <!-- Cabeçalho -->
     <header>
       <nav>
         <div class="nav-container">
-          <!-- Logo à esquerda -->
           <div class="logo">
             <a href="#inicio">Azam Usman</a>
           </div>
 
-          <!-- Menu central -->
           <div class="nav-center">
             <ul>
               <li><a href="#inicio">Início</a></li>
               <li><a href="#sobre">Sobre</a></li>
               <li><a href="#projetos">Projectos</a></li>
-              <li><a href="#depoimentos">Depoimentos</a></li>
+              <li><a href="#habilidades">Habilidades</a></li>
               <li><a href="#contato">Contacto</a></li>
             </ul>
           </div>
 
-          <!-- Botão tema à direita -->
           <div class="nav-right">
-            <div class="location-info">
-              <img src="/icons/location.svg" alt="Localização" />
-              <!-- Adicionar barra inicial -->
-            </div>
             <button id="toggle-theme" aria-label="Alternar tema">
               <img src="icons/moon.svg" alt="Ícone tema" />
             </button>
           </div>
 
-          <!-- Menu hamburguer para mobile (só visível em mobile) -->
           <button class="menu-toggle" aria-label="Abrir menu">
             <span></span>
             <span></span>
@@ -93,7 +78,6 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="hero-content" data-aos="fade-up">
         <h1>Transformando Ideias em Realidade Digital</h1>
@@ -108,14 +92,22 @@
       </div>
     </section>
 
-    <!-- Seção Sobre -->
     <section id="sobre">
       <div class="container">
         <h2 data-aos="fade-up">Sobre Mim</h2>
         <div class="sobre-content" data-aos="fade-up">
           <div class="profile-image">
             <img src="/images/meuperfil.jpg" alt="Foto de Azam Usman" />
-            <!-- Adicionar barra inicial -->
+            <div class="cv-buttons">
+              <a href="Azam-Usman-CV-PT.pdf" class="btn btn-cv" download>
+                <img src="icons/download.svg" class="icon-btn" />
+                Download CV (PT)
+              </a>
+              <a href="Azam-Usman-CV-EN.pdf" class="btn btn-cv" download>
+                <img src="icons/download.svg" class="icon-btn" />
+                Download CV (EN)
+              </a>
+            </div>
           </div>
           <div class="bio">
             <p>
@@ -140,7 +132,6 @@
       </div>
     </section>
 
-    <!-- Seção Projectos -->
     <section id="projetos">
       <div class="container">
         <h2 data-aos="fade-up">Projectos Recentes</h2>
@@ -153,9 +144,11 @@
         </div>
 
         <div class="projetos-grid">
-          <!-- Projeto 1 -->
           <div class="projeto-card web" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('/images/projetos/web1.jpg');"></div>
+            <div
+              class="projeto-imagem"
+              style="background-image: url('/images/projetos/web1.jpg')"
+            ></div>
             <div class="projeto-info">
               <span class="categoria">Desenvolvimento Web</span>
               <h3>Plataforma E-commerce</h3>
@@ -172,9 +165,11 @@
             </div>
           </div>
 
-          <!-- Projeto 2 -->
           <div class="projeto-card mobile" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('/images/projetos/mobile1.jpg');"></div>
+            <div
+              class="projeto-imagem"
+              style="background-image: url('/images/projetos/mobile1.jpg')"
+            ></div>
             <div class="projeto-info">
               <span class="categoria">Mobile</span>
               <h3>Aplicativo de Saúde</h3>
@@ -191,9 +186,11 @@
             </div>
           </div>
 
-          <!-- Projeto 3 -->
           <div class="projeto-card backend" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('/images/projetos/backend1.jpg');"></div>
+            <div
+              class="projeto-imagem"
+              style="background-image: url('/images/projetos/backend1.jpg')"
+            ></div>
             <div class="projeto-info">
               <span class="categoria">Backend</span>
               <h3>Sistema de Autenticação</h3>
@@ -213,42 +210,100 @@
       </div>
     </section>
 
-    <!-- Depoimentos -->
-    <section id="depoimentos">
+    <section id="habilidades">
       <div class="container">
-        <h2 data-aos="fade-up">Depoimentos</h2>
+        <h2 data-aos="fade-up">Habilidades e Ferramentas</h2>
 
-        <div class="depoimentos-container">
-          <div class="depoimento" data-aos="fade-up">
-            <div class="quote">"</div>
-            <p>
-              "Profissional excepcional que demonstrou elevada competência
-              técnica e capacidade de inovação. O projecto foi concluído antes
-              do prazo estabelecido, superando as expectativas iniciais."
-            </p>
-            <div class="cliente">
-              <h4>Carlos Mendes</h4>
-              <span>Director Técnico, TechSolutions Lda</span>
-            </div>
-          </div>
+        <div class="habilidades-grid" data-aos="fade-up">
+          <a
+            href="https://developer.mozilla.org/pt-BR/docs/Web/HTML"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/html.svg" alt="Ícone HTML" />
+            <h3>HTML5</h3>
+            <p>Estrutura e semântica</p>
+          </a>
 
-          <div class="depoimento" data-aos="fade-up">
-            <div class="quote">"</div>
-            <p>
-              "Azam entregou uma solução móvel que transformou completamente a
-              experiência dos nossos clientes. Sua atenção aos detalhes e
-              conhecimento técnico são impressionantes."
-            </p>
-            <div class="cliente">
-              <h4>Ana Silva</h4>
-              <span>CEO, HealthApp Moçambique</span>
-            </div>
-          </div>
+          <a
+            href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/css.svg" alt="Ícone CSS" />
+            <h3>CSS3</h3>
+            <p>Estilização e design</p>
+          </a>
+
+          <a
+            href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/javascript.svg" alt="Ícone JavaScript" />
+            <h3>JavaScript</h3>
+            <p>Lógica e interatividade</p>
+          </a>
+
+          <a
+            href="https://reactjs.org/"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/react.svg" alt="Ícone React" />
+            <h3>React</h3>
+            <p>Componentes UI</p>
+          </a>
+
+          <a
+            href="https://flutter.dev/"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/flutter.svg" alt="Ícone Flutter" />
+            <h3>Flutter</h3>
+            <p>Desenvolvimento mobile</p>
+          </a>
+
+          <a href="https://golang.org/" target="_blank" class="habilidade-card">
+            <img src="icons/golang.svg" alt="Ícone Golang" />
+            <h3>Golang</h3>
+            <p>Servidores de alto desempenho</p>
+          </a>
+
+          <a
+            href="https://nodejs.org/"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/nodejs.svg" alt="Ícone Node.js" />
+            <h3>Node.js</h3>
+            <p>Ambiente de execução</p>
+          </a>
+
+          <a
+            href="https://www.java.com/"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/java.svg" alt="Ícone Java" />
+            <h3>Java</h3>
+            <p>Aplicações empresariais</p>
+          </a>
+
+          <a
+            href="https://www.python.org/"
+            target="_blank"
+            class="habilidade-card"
+          >
+            <img src="icons/python.svg" alt="Ícone Python" />
+            <h3>Python</h3>
+            <p>Automação e data science</p>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Contacto -->
     <section id="contato">
       <div class="container">
         <h2 data-aos="fade-up">Contacto</h2>
@@ -305,7 +360,6 @@
       </div>
     </section>
 
-    <!-- Rodapé -->
     <footer>
       <div class="container">
         <p>&copy; 2023 Azam Usman. Todos os direitos reservados.</p>
@@ -313,7 +367,6 @@
       </div>
     </footer>
 
-    <!-- Botão voltar ao topo -->
     <button id="back-to-top" aria-label="Voltar ao topo">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -324,15 +377,12 @@
       </svg>
     </button>
 
-    <!-- Elemento para as partículas -->
     <div id="particles-js"></div>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      // Inicializar AOS
       AOS.init({
         duration: 800,
         easing: "ease-out-quart",
