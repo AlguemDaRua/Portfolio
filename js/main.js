@@ -1,358 +1,254 @@
 // Preloader SIMPLIFICADO (sem animações complexas)
 window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    // Esconde o preloader imediatamente
-    preloader.style.display = 'none';
+  const preloader = document.getElementById('preloader');
+  // Esconde o preloader imediatamente
+  preloader.style.display = 'none';
 });
 
 // Verificar e aplicar tema salvo
 function applySavedTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const toggleThemeButton = document.getElementById('toggle-theme');
+  const savedTheme = localStorage.getItem('theme');
+  const toggleThemeButton = document.getElementById('toggle-theme');
 
-    if (!savedTheme) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.body.classList.add('dark-mode');
-            toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
-        }
-        return;
+  if (!savedTheme) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark-mode');
+      toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
     }
+    return;
+  }
 
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
-    } else {
-        document.body.classList.remove('dark-mode');
-        toggleThemeButton.querySelector('img').src = 'icons/moon.svg';
-    }
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
+  } else {
+    document.body.classList.remove('dark-mode');
+    toggleThemeButton.querySelector('img').src = 'icons/moon.svg';
+  }
 }
 
 // Transição de tema com efeito de onda
 function toggleTheme(e) {
-    const button = e.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const overlay = document.querySelector('.theme-wave-overlay');
+  const button = e.currentTarget;
+  const rect = button.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  const overlay = document.querySelector('.theme-wave-overlay');
 
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    const newTheme = isDarkMode ? 'light' : 'dark';
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  const newTheme = isDarkMode ? 'light' : 'dark';
 
-    overlay.style.background = newTheme === 'dark' ? '#121212' : '#f8f9fa';
-    overlay.style.setProperty('--pos-x', `${x}px`);
-    overlay.style.setProperty('--pos-y', `${y}px`);
-    overlay.classList.add('active');
+  document.documentElement.style.setProperty('--pos-x', `${x}px`);
+  document.documentElement.style.setProperty('--pos-y', `${y}px`);
+  overlay.classList.add('active');
 
-    // Mudar o tema após a animação
+  setTimeout(() => {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', newTheme);
+    const themeIcon = document.getElementById('toggle-theme').querySelector('img');
+    themeIcon.src = `icons/${newTheme === 'dark' ? 'sun' : 'moon'}.svg`;
+
     setTimeout(() => {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', newTheme);
-
-        const themeIcon = button.querySelector('img');
-        themeIcon.src = newTheme === 'dark' ? 'icons/sun.svg' : 'icons/moon.svg';
-        themeIcon.alt = newTheme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro';
-
-        // Remover a classe active após a animação
-        setTimeout(() => {
-            overlay.classList.remove('active');
-        }, 100);
-    }, 500);
+      overlay.classList.remove('active');
+    }, 300);
+  }, 500);
 }
 
-// Função para inicializar as partículas
-function initParticlesWithRetry(attempt = 0) {
-    if (attempt > 3) return;
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  applySavedTheme();
 
-    if (typeof particlesJS === 'function') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 100 },
-                color: { value: "#ff4d94" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#00c6ff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out"
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 400, line_linked: { opacity: 1 } },
-                    push: { particles_nb: 4 }
-                }
-            }
-        });
+  const toggleThemeButton = document.getElementById('toggle-theme');
+  const mobileToggleThemeButton = document.getElementById('mobile-toggle-theme');
+
+  if (toggleThemeButton) {
+    toggleThemeButton.addEventListener('click', toggleTheme);
+  }
+
+  if (mobileToggleThemeButton) {
+    mobileToggleThemeButton.addEventListener('click', toggleTheme);
+  }
+
+  // Menu Hamburguer
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navCenter = document.querySelector('.nav-center');
+  const body = document.body;
+
+  menuToggle.addEventListener('click', () => {
+    navCenter.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+    body.classList.toggle('menu-open');
+  });
+
+  // Fecha o menu ao clicar em um link
+  document.querySelectorAll('.nav-center a').forEach(link => {
+    link.addEventListener('click', () => {
+      navCenter.classList.remove('active');
+      menuToggle.classList.remove('active');
+      body.classList.remove('menu-open');
+    });
+  });
+
+  // Botão voltar ao topo
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopButton.style.display = 'flex';
     } else {
-        setTimeout(() => initParticlesWithRetry(attempt + 1), 200);
+      backToTopButton.style.display = 'none';
     }
-}
+  });
 
-// DOMContentLoaded para garantir que o DOM está pronto
-document.addEventListener('DOMContentLoaded', function () {
-    // Inicializar o tema
-    applySavedTheme();
-
-    // Event listener para alternar tema
-    const toggleThemeButton = document.getElementById('toggle-theme');
-    if (toggleThemeButton) {
-        toggleThemeButton.addEventListener('click', toggleTheme);
-    }
-
-    // Lógica do menu mobile
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelectorAll('.mobile-menu a');
-
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('active');
-                document.body.classList.toggle('modal-open');
-            }
-        });
-    }
-
-    if (navLinks) {
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mobileMenu) {
-                    mobileMenu.classList.remove('active');
-                    document.body.classList.remove('modal-open');
-                }
-                if (menuToggle) {
-                    menuToggle.classList.remove('active');
-                }
-            });
-        });
-    }
-
-    // Botão Voltar ao Topo
-    const backToTopButton = document.getElementById('back-to-top');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // Filtro de Projetos
-    const filterButtons = document.querySelectorAll('.filtro-btn');
-    const projectCards = document.querySelectorAll('.projeto-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.dataset.filter;
-
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            projectCards.forEach(card => {
-                const category = card.dataset.category;
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
+  });
 
-    // Formulário de contato
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-        event.preventDefault();
+  // Filtro de Projetos
+  const filtroBtns = document.querySelectorAll('.filtro-btn');
+  const projetoCards = document.querySelectorAll('.projeto-card');
 
-        const nome = this.nome.value.trim();
-        const email = this.email.value.trim();
-        const mensagem = this.mensagem.value.trim();
-
-        if (!nome || !email || !mensagem) {
-            alert('Por favor, preencha todos os campos.');
-            return;
+  filtroBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelector('.filtro-btn.active').classList.remove('active');
+      btn.classList.add('active');
+      const filtro = btn.dataset.filter;
+      projetoCards.forEach(card => {
+        if (filtro === 'all' || card.dataset.category === filtro) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
-
-        const btnSubmit = this.querySelector('button[type="submit"]');
-        btnSubmit.disabled = true;
-        btnSubmit.textContent = 'Enviando...';
-
-        // Os IDs são os que você criou no EmailJS
-        const serviceID = 'myomg';
-        const templateID = 'template';
-
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                alert('Mensagem enviada com sucesso!');
-                this.reset();
-            }, (error) => {
-                alert('Ocorreu um erro ao enviar a mensagem: ' + error.text);
-            })
-            .finally(() => {
-                btnSubmit.disabled = false;
-                btnSubmit.textContent = 'Enviar Mensagem';
-            });
+      });
     });
+  });
 
-    // Efeito de máquina de escrever no hero
-    const heroTitle = document.querySelector('.hero h1');
-    const originalText = heroTitle.textContent;
-    let charIndex = 0;
+  // Dados para o modal (exemplo)
+  const projetosData = [{
+      id: 1,
+      titulo: 'Sistema de Gestão de Conteúdo',
+      imagem: '/images/pro-1.jpg',
+      descricao: 'Plataforma web robusta para a criação e gestão de conteúdo dinâmico. Permite a publicação em tempo real, agendamento de posts e análise de tráfego. Desenvolvido para ser escalável e fácil de usar.',
+      tecnologias: ['HTML', 'CSS', 'JavaScript', 'Python', 'Django'],
+      linkLive: 'https://exemplo-cms.com',
+      linkGitHub: 'https://github.com/AzamUsman/cms-project'
+    },
+    {
+      id: 2,
+      titulo: 'App de Produtividade',
+      imagem: '/images/pro-2.jpg',
+      descricao: 'Aplicação mobile inovadora para organização pessoal e profissional. Inclui gestão de tarefas, calendário integrado e um sistema de lembretes personalizáveis para ajudar a manter o foco.',
+      tecnologias: ['Flutter', 'Dart', 'Firebase', 'APIs REST'],
+      linkLive: 'https://exemplo-app.com',
+      linkGitHub: 'https://github.com/AzamUsman/app-produtividade'
+    },
+    {
+      id: 3,
+      titulo: 'E-commerce para Pequenas Empresas',
+      imagem: '/images/pro-3.jpg',
+      descricao: 'Solução completa de loja online, do catálogo de produtos ao processamento de pagamentos seguro. Foco em uma experiência de usuário simples e um painel de administração intuitivo.',
+      tecnologias: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'MongoDB'],
+      linkLive: 'https://exemplo-ecommerce.com',
+      linkGitHub: 'https://github.com/AzamUsman/ecommerce-solution'
+    },
+    {
+      id: 4,
+      titulo: 'App de Saúde e Fitness',
+      imagem: '/images/pro-4.jpg',
+      descricao: 'Aplicação mobile para acompanhar exercícios e nutrição. Permite criar metas personalizadas, registrar o progresso e receber dicas de bem-estar. Design moderno e funcional.',
+      tecnologias: ['Flutter', 'Dart', 'APIs de Saúde', 'SQLite'],
+      linkLive: 'https://exemplo-fitness.com',
+      linkGitHub: 'https://github.com/AzamUsman/fitness-app'
+    },
+    {
+      id: 5,
+      titulo: 'Dashboard de Análise de Dados',
+      imagem: '/images/pro-5.jpg',
+      descricao: 'Ferramenta interativa para visualização de dados em tempo real. Permite analisar métricas complexas através de gráficos e painéis personalizados, ideal para tomada de decisões.',
+      tecnologias: ['React', 'D3.js', 'Python', 'Flask'],
+      linkLive: 'https://exemplo-dashboard.com',
+      linkGitHub: 'https://github.com/AzamUsman/data-dashboard'
+    },
+    {
+      id: 6,
+      titulo: 'Blog Pessoal Moderno',
+      imagem: '/images/pro-6.jpg',
+      descricao: 'Blog minimalista e responsivo com sistema de comentários integrado. Desenvolvido para ser rápido e otimizado para SEO, oferecendo uma ótima experiência de leitura.',
+      tecnologias: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express'],
+      linkLive: 'https://exemplo-blog.com',
+      linkGitHub: 'https://github.com/AzamUsman/modern-blog'
+    },
+  ];
 
-    function typeWriter() {
-        if (charIndex < originalText.length) {
-            heroTitle.textContent = originalText.substring(0, charIndex + 1);
-            charIndex++;
-            setTimeout(typeWriter, 80);
-        }
-    }
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const modalCloseBtn = document.querySelector('.modal-close-btn');
 
-    setTimeout(typeWriter, 1000);
-
-    // Inicializar particles.js
-    initParticlesWithRetry();
-
-    // Lógica do Modal de Projetos
-    const projectDetails = {
-        '1': {
-            title: 'Sistema de Gestão de Conteúdo',
-            image: '/images/pro-1.jpg',
-            description: 'Uma plataforma web completa para criação, edição e publicação de conteúdo digital. Construída com um backend robusto em Python (Django) e uma interface de usuário moderna com React. Oferece controle de acesso, agendamento de publicações e um editor WYSIWYG intuitivo.',
-            techs: ['Python', 'Django', 'React', 'PostgreSQL', 'HTML', 'CSS', 'JavaScript'],
-            liveLink: 'https://exemplo-cms.com',
-            githubLink: 'https://github.com/AzamUsman/cms-project'
-        },
-        '2': {
-            title: 'App de Produtividade',
-            image: '/images/pro-2.jpg',
-            description: 'Aplicação móvel de produtividade para gerenciar tarefas e hábitos diários. Desenvolvida em Flutter, a aplicação oferece uma interface limpa, notificações push para lembretes e sincronização em tempo real com a nuvem.',
-            techs: ['Flutter', 'Dart', 'Firebase', 'Mobile Development'],
-            liveLink: 'https://play.google.com/store/apps/produtividade',
-            githubLink: 'https://github.com/AzamUsman/productivity-app'
-        },
-        '3': {
-            title: 'E-commerce para Pequenas Empresas',
-            image: '/images/pro-3.jpg',
-            description: 'Uma solução de comércio eletrónico personalizável, construída com Java e Spring Boot para o backend e um frontend em Vue.js. Inclui carrinho de compras, processamento de pagamentos seguro e um painel de administração para gestão de produtos e pedidos.',
-            techs: ['Java', 'Spring Boot', 'Vue.js', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
-            liveLink: 'https://exemplo-loja.com',
-            githubLink: 'https://github.com/AzamUsman/e-commerce-project'
-        },
-        '4': {
-            title: 'App de Saúde e Fitness',
-            image: '/images/pro-4.jpg',
-            description: 'App mobile com funcionalidades de acompanhamento de exercícios, nutrição e definição de metas. Desenvolvida em Flutter, permite que os utilizadores registem os seus treinos, controlem a ingestão calórica e visualizem o progresso através de gráficos interativos.',
-            techs: ['Flutter', 'Dart', 'Firebase', 'API REST'],
-            liveLink: 'https://play.google.com/store/apps/fitness',
-            githubLink: 'https://github.com/AzamUsman/fitness-app'
-        },
-        '5': {
-            title: 'Dashboard de Análise de Dados',
-            image: '/images/pro-5.jpg',
-            description: 'Uma ferramenta web para visualização e análise de dados de negócios. Criada com Python (Flask) e bibliotecas como Pandas e Chart.js, a dashboard permite aos utilizadores carregar os seus dados e gerar relatórios visuais dinâmicos.',
-            techs: ['Python', 'Flask', 'Pandas', 'Chart.js', 'HTML', 'CSS', 'JavaScript'],
-            liveLink: 'https://exemplo-dashboard.com',
-            githubLink: 'https://github.com/AzamUsman/data-dashboard'
-        },
-        '6': {
-            title: 'Blog Pessoal Moderno',
-            image: '/images/pro-6.jpg',
-            description: 'Um blog pessoal elegante e responsivo, construído com Golang no backend para alto desempenho e uma interface de usuário minimalista. Apresenta um sistema de comentários integrado e é otimizado para SEO.',
-            techs: ['Golang', 'HTML', 'CSS', 'JavaScript', 'Database SQL'],
-            liveLink: 'https://exemplo-blog.com',
-            githubLink: 'https://github.com/AzamUsman/personal-blog'
-        }
-    };
-
-    const modalOverlay = document.querySelector('.modal-overlay');
-    const modalCloseBtn = document.querySelector('.modal-close-btn');
-    const modalImage = document.querySelector('.modal-image');
-    const modalTitle = document.querySelector('.modal-title');
-    const modalDescription = document.querySelector('.modal-description');
-    const modalTechList = document.querySelector('.modal-tech-list');
-    const modalLiveLink = document.getElementById('modal-live-link');
-    const modalGithubLink = document.getElementById('modal-github-link');
-    const projectDetailButtons = document.querySelectorAll('.btn-detalhes');
-
-    function openModal(projectId) {
-        const project = projectDetails[projectId];
-        if (project) {
-            // Preenche o conteúdo do modal
-            modalImage.src = project.image;
-            modalTitle.textContent = project.title;
-            modalDescription.textContent = project.description;
-
-            // Limpa e preenche a lista de tecnologias
-            modalTechList.innerHTML = '';
-            project.techs.forEach(tech => {
-                const li = document.createElement('li');
-                li.textContent = tech;
-                modalTechList.appendChild(li);
-            });
-
-            // Atualiza os links
-            modalLiveLink.href = project.liveLink;
-            modalGithubLink.href = project.githubLink;
-
-            // Mostra o modal e desabilita o scroll da página
-            modalOverlay.classList.add('active');
-            document.body.classList.add('modal-open');
-        }
-    }
-
-    function closeModal() {
-        modalOverlay.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-
-    // Adiciona event listeners aos botões
-    projectDetailButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectId = button.dataset.projectId;
-            openModal(projectId);
+  document.querySelectorAll('.btn-detalhes').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const projectId = parseInt(btn.dataset.projectId);
+      const projeto = projetosData.find(p => p.id === projectId);
+      if (projeto) {
+        document.querySelector('.modal-image').src = projeto.imagem;
+        document.querySelector('.modal-title').textContent = projeto.titulo;
+        document.querySelector('.modal-description').textContent = projeto.descricao;
+        const techList = document.querySelector('.modal-tech-list');
+        techList.innerHTML = '';
+        projeto.tecnologias.forEach(tech => {
+          const li = document.createElement('li');
+          li.textContent = tech;
+          techList.appendChild(li);
         });
+        document.getElementById('modal-live-link').href = projeto.linkLive;
+        document.getElementById('modal-github-link').href = projeto.linkGitHub;
+        modalOverlay.classList.add('active');
+        document.body.classList.add('modal-open');
+      }
     });
+  });
 
-    // Adiciona event listeners para fechar o modal
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            closeModal();
-        }
-    });
+  modalCloseBtn.addEventListener('click', () => {
+    modalOverlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  });
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+  });
+
+  // Formulário de contato
+  document.getElementById('contact-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const nome = this.nome.value.trim();
+    const email = this.email.value.trim();
+    const mensagem = this.mensagem.value.trim();
+
+    if (!nome || !email || !mensagem) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    const btnSubmit = this.querySelector('button[type="submit"]');
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Enviando...';
+
+    emailjs.sendForm('myomg', 'template', this)
+      .then(() => {
+        alert('Mensagem enviada com sucesso!');
+        this.reset();
+      }, (error) => {
+        alert('Ocorreu um erro ao enviar a mensagem: ' + error.text);
+      })
+      .finally(() => {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Enviar Mensagem';
+      });
+  });
+
 });

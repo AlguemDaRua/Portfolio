@@ -40,8 +40,6 @@
     </script>
   </head>
   <body>
-    <div class="theme-wave-overlay"></div>
-
     <div id="preloader">
       <div class="spinner"></div>
     </div>
@@ -52,7 +50,6 @@
           <div class="logo">
             <a href="#inicio">Azam Usman</a>
           </div>
-
           <div class="nav-center">
             <ul>
               <li><a href="#inicio">Início</a></li>
@@ -62,18 +59,16 @@
               <li><a href="#contato">Contacto</a></li>
             </ul>
           </div>
-
           <div class="nav-right">
             <button id="toggle-theme" aria-label="Alternar tema">
               <img src="icons/moon.svg" alt="Ícone tema" />
             </button>
           </div>
-
           <button class="menu-toggle" aria-label="Abrir menu">
             <span></span>
             <span></span>
             <span></span>
-          </sutton>
+          </button>
         </div>
       </nav>
     </header>
@@ -84,7 +79,6 @@
         <p>Desenvolvedor Full Stack e Mobile | Especialista em Soluções Tecnológicas</p>
         <a href="#projetos" class="btn">Explorar Projectos</a>
       </div>
-
       <div class="scroll-indicator">
         <div class="mouse">
           <div class="wheel"></div>
@@ -98,7 +92,7 @@
         <div class="sobre-content" data-aos="fade-up">
           <div class="profile-image">
             <img src="/images/meuperfil.jpg" alt="Foto de Azam Usman" />
-            </div>
+          </div>
           <div class="bio">
             <p>
               Saudações! Sou <strong>Azam Usman</strong>, Estudante de
@@ -117,7 +111,7 @@
                 <li>Golang para sistemas de alto desempenho</li>
               </ul>
             </div>
-             <div class="cv-buttons">
+            <div class="cv-buttons">
               <a href="CV-Azam-Usman.pdf" class="btn btn-secondary" target="_blank"
                 >Ver CV</a
               >
@@ -148,11 +142,10 @@
                 real.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="1">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="1"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -168,11 +161,10 @@
                 pessoal.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="2">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="2"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -188,11 +180,10 @@
                 pagamentos.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="3">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="3"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -207,11 +198,10 @@
                 Acompanhamento de exercícios e nutrição com metas personalizadas.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="4">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="4"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -226,11 +216,10 @@
                 Ferramenta interativa para visualização de dados em tempo real.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="5">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="5"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -246,11 +235,10 @@
                 integrado.
               </p>
               <div class="botoes-card">
-                <a href="#" class="btn-detalhes" data-project-id="6">Ver Detalhes</a>
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="btn-icon"
+                <a href="#" class="btn-detalhes" data-project-id="6"
+                  >Ver Detalhes</a
+                >
+                <a href="#" aria-label="GitHub" class="btn-icon"
                   ><img src="icons/github.svg" alt="GitHub"
                 /></a>
               </div>
@@ -263,34 +251,48 @@
     <section id="habilidades">
       <div class="container">
         <h2 data-aos="fade-up">Minhas Habilidades</h2>
-        <div class="habilidades-container" data-aos="fade-up">
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="100">
-            <img src="icons/html.svg" alt="HTML" />
-            <p>HTML5</p>
+        <div class="habilidades-grid" data-aos="fade-up">
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="habilidade-icon">
+              <img src="icons/html.svg" alt="HTML" />
+            </div>
+            <h3>HTML5</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="200">
-            <img src="icons/css.svg" alt="CSS" />
-            <p>CSS3</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="habilidade-icon">
+              <img src="icons/css.svg" alt="CSS" />
+            </div>
+            <h3>CSS3</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="300">
-            <img src="icons/javascript.svg" alt="JavaScript" />
-            <p>JavaScript</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="habilidade-icon">
+              <img src="icons/js.svg" alt="JavaScript" />
+            </div>
+            <h3>JavaScript</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="400">
-            <img src="icons/flutter.svg" alt="Flutter" />
-            <p>Flutter</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="habilidade-icon">
+              <img src="icons/flutter.svg" alt="Flutter" />
+            </div>
+            <h3>Flutter</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="500">
-            <img src="icons/java.svg" alt="Java" />
-            <p>Java</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="500">
+            <div class="habilidade-icon">
+              <img src="icons/java.svg" alt="Java" />
+            </div>
+            <h3>Java</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="600">
-            <img src="icons/python.svg" alt="Python" />
-            <p>Python</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="600">
+            <div class="habilidade-icon">
+              <img src="icons/python.svg" alt="Python" />
+            </div>
+            <h3>Python</h3>
           </div>
-          <div class="habilidade-item" data-aos="zoom-in" data-aos-delay="700">
-            <img src="icons/golang.svg" alt="Golang" />
-            <p>Golang</p>
+          <div class="habilidade-card" data-aos="zoom-in" data-aos-delay="700">
+            <div class="habilidade-icon">
+              <img src="icons/go.svg" alt="Golang" />
+            </div>
+            <h3>Golang</h3>
           </div>
         </div>
       </div>
@@ -317,10 +319,8 @@
               required
             ></textarea>
           </div>
-
           <button type="submit" class="btn">Enviar Mensagem</button>
         </form>
-
         <div class="redes-sociais" data-aos="fade-up">
           <a href="#" aria-label="Facebook"
             ><img src="icons/facebook.svg" alt="Facebook"
@@ -355,28 +355,6 @@
       </svg>
     </button>
 
-    <div class="modal-overlay">
-      <div class="modal-card">
-        <button class="modal-close-btn">&times;</button>
-        <div class="modal-content">
-          <img src="" alt="Imagem do Projeto" class="modal-image" />
-          <h3 class="modal-title"></h3>
-          <p class="modal-description"></p>
-          <div class="modal-techs">
-            <h4>Tecnologias Utilizadas:</h4>
-            <ul class="modal-tech-list"></ul>
-          </div>
-          <div class="modal-buttons">
-            <a href="#" target="_blank" class="btn modal-btn" id="modal-live-link">Ver ao Vivo</a>
-            <a href="#" target="_blank" class="btn modal-btn" id="modal-github-link">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="particles-js"></div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="js/main.js"></script>
     <script>
