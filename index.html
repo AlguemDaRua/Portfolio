@@ -2,7 +2,7 @@
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
-    <title>Portfólio Profissional</title>
+    <title>Azam Usman | Software Dev</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -161,7 +161,7 @@
                 <span>Node.js</span>
                 <span>MongoDB</span>
               </div>
-              <a href="#" class="btn">Ver Detalhes</a>
+              <a href="#" class="btn open-modal" data-id="ecommerce">Ver Detalhes</a>
             </div>
           </div>
 
@@ -181,7 +181,7 @@
                 <span>Firebase</span>
                 <span>Dart</span>
               </div>
-              <a href="#" class="btn">Ver Detalhes</a>
+              <a href="#" class="btn open-modal" data-id="parkwise">Ver Detalhes</a>
             </div>
           </div>
 
@@ -202,7 +202,7 @@
                 <span>JWT</span>
                 <span>PostgreSQL</span>
               </div>
-              <a href="#" class="btn">Ver Detalhes</a>
+              <a href="#" class="btn open-modal" data-id="auth-system">Ver Detalhes</a>
             </div>
           </div>
         </div>
@@ -355,6 +355,27 @@
         <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" />
       </svg>
     </button>
+
+    <div class="project-modal-overlay">
+      <div class="project-modal">
+        <button class="modal-close-btn">&times;</button>
+        <div class="modal-content">
+          <div class="modal-image-container">
+            <img src="" alt="Imagem do Projecto" class="modal-image" />
+          </div>
+          <div class="modal-text-content">
+            <span class="modal-category"></span>
+            <h3 class="modal-title"></h3>
+            <p class="modal-description"></p>
+            <div class="modal-tech-list"></div>
+            <div class="modal-buttons">
+              <a href="#" class="btn modal-btn-primary">Visitar Site</a>
+              <a href="#" class="btn modal-btn-secondary">Ver no GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>

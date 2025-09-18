@@ -59,52 +59,37 @@ function toggleTheme(e) {
     }, 500);
 }
 
-// Função para inicializar as partículas
-function initParticlesWithRetry(attempt = 0) {
-    if (attempt > 3) return;
 
-    if (typeof particlesJS === 'function') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 100 },
-                color: { value: "#ff4d94" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#00c6ff",
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out"
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 400, line_linked: { opacity: 1 } },
-                    push: { particles_nb: 4 }
-                }
-            }
-        });
-    } else {
-        setTimeout(() => initParticlesWithRetry(attempt + 1), 500);
+// Dados dos projectos para o modal
+const projectData = {
+    'ecommerce': {
+        title: 'Plataforma E-commerce',
+        category: 'Desenvolvimento Web',
+        description: 'Desenvolvimento de uma plataforma de comércio eletrónico de ponta. A aplicação apresenta uma interface de utilizador responsiva, um carrinho de compras funcional, gestão de produtos, integração de gateways de pagamento e um painel de administração para gestão de stock e pedidos. Construída com React para a interface do utilizador, Node.js e Express para o backend, e MongoDB para a base de dados, garantindo escalabilidade e desempenho.',
+        techs: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API'],
+        image: '/images/projetos/web1.jpg',
+        siteLink: '#',
+        githubLink: '#'
+    },
+    'parkwise': {
+        title: 'ParkWISE',
+        category: 'Mobile',
+        description: 'Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real. O ParkWISE permite que os usuários encontrem vagas de estacionamento disponíveis, visualizem a ocupação em tempo real e paguem pelo estacionamento digitalmente. Utiliza Flutter para uma experiência fluida em iOS e Android e Firebase para autenticação de utilizadores, armazenamento de dados em tempo real e hospedagem.',
+        techs: ['Flutter', 'Firebase', 'Dart', 'Google Maps API'],
+        image: '/images/projetos/parkwise.png',
+        siteLink: '#',
+        githubLink: '#'
+    },
+    'auth-system': {
+        title: 'Sistema de Autenticação',
+        category: 'Backend',
+        description: 'Criação de um sistema robusto e seguro para autenticação e autorização de utilizadores. O sistema lida com o registo, login, redefinição de palavra-passe e gestão de tokens de sessão. Projetado com Golang para alto desempenho e concorrência, utiliza JWT para segurança e armazena credenciais e dados de utilizadores em um banco de dados PostgreSQL.',
+        techs: ['Golang', 'JWT', 'PostgreSQL', 'Docker', 'REST API'],
+        image: '/images/projetos/backend1.jpg',
+        siteLink: '#',
+        githubLink: '#'
     }
-}
-initParticlesWithRetry();
+};
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
@@ -228,6 +213,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleThemeButton.addEventListener('click', toggleTheme);
     mobileToggleThemeButton.addEventListener('click', toggleTheme);
+
+    // Lógica do Modal de Projetos
+    const projectModalOverlay = document.querySelector('.project-modal-overlay');
+    const projectModal = document.querySelector('.project-modal');
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    const closeModalButton = document.querySelector('.modal-close-btn');
+
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = e.target.getAttribute('data-id');
+            const project = projectData[projectId];
+
+            if (project) {
+                // Preencher o modal com os dados do projeto
+                document.querySelector('.modal-image').src = project.image;
+                document.querySelector('.modal-category').textContent = project.category;
+                document.querySelector('.modal-title').textContent = project.title;
+                document.querySelector('.modal-description').textContent = project.description;
+
+                // Preencher tecnologias
+                const techList = document.querySelector('.modal-tech-list');
+                techList.innerHTML = '';
+                project.techs.forEach(tech => {
+                    const span = document.createElement('span');
+                    span.textContent = tech;
+                    techList.appendChild(span);
+                });
+
+                // Atualizar links
+                document.querySelector('.modal-btn-primary').href = project.siteLink;
+                document.querySelector('.modal-btn-secondary').href = project.githubLink;
+
+                // Mostrar o modal
+                projectModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Evita scroll no corpo
+            }
+        });
+    });
+
+    // Fechar modal
+    const closeModal = () => {
+        projectModalOverlay.classList.add('closing'); // Adiciona classe para a animação de fecho
+        projectModalOverlay.addEventListener('transitionend', () => {
+            projectModalOverlay.classList.remove('active', 'closing');
+            document.body.style.overflow = '';
+        }, { once: true }); // Garante que o evento só é executado uma vez
+    };
+
+    closeModalButton.addEventListener('click', closeModal);
+
+    projectModalOverlay.addEventListener('click', (e) => {
+        // Fechar o modal se o clique for no overlay e não no modal em si
+        if (e.target === projectModalOverlay) {
+            closeModal();
+        }
+    });
 
     // Inicializar EmailJS
     (function () {
