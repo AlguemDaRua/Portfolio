@@ -1,0 +1,45 @@
+{
+  "name": "Azam Usman",
+  "title": "Software Developer",
+  "tagline": "Desenvolvedor Full Stack | Especialista em Soluções Tecnológicas",
+  "heroTitle": "Transformando Ideias em Realidade Digital",
+  "about": {
+    "bio": "Saudações! Sou <strong>Azam Usman</strong>, profissional especializado em desenvolvimento de software com mais de 5 anos de experiência. Minha paixão é criar soluções digitais eficientes que resolvem problemas reais.",
+    "profileImage": "assets/images/profile/meuperfil.jpg",
+    "cvs": [
+      {
+        "label": "Download CV (PT)",
+        "file": "assets/docs/cv-pt.pdf",
+        "filename": "Azam-Usman-CV-PT.pdf"
+      },
+      {
+        "label": "Download CV (EN)",
+        "file": "assets/docs/cv-en.pdf",
+        "filename": "Azam-Usman-CV-EN.pdf"
+      }
+    ],
+    "competencies": [
+      "Desenvolvimento Web (HTML5, CSS3, JavaScript)",
+      "Desenvolvimento Mobile com Flutter",
+      "Java para aplicações empresariais",
+      "Python para análise de dados e automação",
+      "Golang para sistemas de alto desempenho"
+    ]
+  },
+  "social": {
+    "github": "https://github.com/AlguemDaRua",
+    "linkedin": "https://linkedin.com/in/seuusername",
+    "twitter": "https://twitter.com/AlguemDaRua",
+    "facebook": "https://facebook.com/seuusername",
+    "email": "myomgomg2@gmail.com"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.",
+    "emailjs": {
+      "publicKey": "0I9u8gF_tTbJuC-EI",
+      "serviceId": "myomg",
+      "templateId": "template"
+    }
+  }
+}

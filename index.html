@@ -28,9 +28,6 @@
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
     
     <!-- Preconnect para performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +59,7 @@
       <nav>
         <div class="nav-container">
           <div class="logo">
-            <a href="#inicio">Azam Usman</a>
+            <a href="#inicio" id="logo-text">Carregando...</a>
           </div>
 
           <div class="nav-center">
@@ -93,8 +90,8 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="hero-content" data-aos="fade-up">
-        <h1>Transformando Ideias em Realidade Digital</h1>
-        <p>Desenvolvedor Full Stack | Especialista em Soluções Tecnológicas</p>
+        <h1 id="hero-title">Carregando...</h1>
+        <p id="hero-tagline">...</p>
         <a href="#projetos" class="btn">Explorar Projectos</a>
       </div>
 
@@ -111,63 +108,17 @@
         <h2 data-aos="fade-up">Sobre Mim</h2>
         <div class="sobre-content" data-aos="fade-up">
           <div class="profile-image">
-            <img src="assets/images/profile/meuperfil.jpg" alt="Foto de Azam Usman" loading="lazy" />
-            <div class="cv-buttons">
-              <a href="assets/docs/cv-pt.pdf" class="btn btn-cv" download="Azam-Usman-CV-PT.pdf">
-                <svg class="icon-btn" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/>
-                </svg>
-                Download CV (PT)
-              </a>
-              <a href="assets/docs/cv-en.pdf" class="btn btn-cv" download="Azam-Usman-CV-EN.pdf">
-                <svg class="icon-btn" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/>
-                </svg>
-                Download CV (EN)
-              </a>
+            <img id="profile-img" src="" alt="Foto de perfil" loading="lazy" />
+            <div class="cv-buttons" id="cv-buttons">
+              <!-- CVs serão inseridos via JS -->
             </div>
           </div>
           <div class="bio">
-            <p>
-              Saudações! Sou <strong>Azam Usman</strong>, profissional
-              especializado em desenvolvimento de software com mais de 5 anos de
-              experiência. Minha paixão é criar soluções digitais eficientes que
-              resolvem problemas reais.
-            </p>
-
+            <p id="bio-text"></p>
             <div class="skills">
               <h3>Competências Técnicas</h3>
-              <ul>
-                <li>
-                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                  Desenvolvimento Web (HTML5, CSS3, JavaScript)
-                </li>
-                <li>
-                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                  Desenvolvimento Mobile com Flutter
-                </li>
-                <li>
-                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                  Java para aplicações empresariais
-                </li>
-                <li>
-                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                  Python para análise de dados e automação
-                </li>
-                <li>
-                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                  Golang para sistemas de alto desempenho
-                </li>
+              <ul id="competencies-list">
+                <!-- Competências serão inseridas via JS -->
               </ul>
             </div>
           </div>
@@ -187,61 +138,8 @@
           <button data-filter="backend" class="btn">Backend</button>
         </div>
 
-        <div class="projetos-grid">
-          <!-- Projeto Web -->
-          <div class="projeto-card web" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/web1.jpg')"></div>
-            <div class="projeto-info">
-              <span class="categoria">Desenvolvimento Web</span>
-              <h3>Plataforma E-commerce</h3>
-              <p>
-                Solução completa de comércio electrónico com carrinho de compras
-                e integração de pagamentos.
-              </p>
-              <div class="tecnologias">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>MongoDB</span>
-              </div>
-              <a href="#" class="btn open-modal" data-id="ecommerce">Ver Detalhes</a>
-            </div>
-          </div>
-
-          <!-- Projeto Mobile -->
-          <div class="projeto-card mobile" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/parkwise.png')"></div>
-            <div class="projeto-info">
-              <span class="categoria">Mobile</span>
-              <h3>ParkWISE</h3>
-              <p>
-                Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real.
-              </p>
-              <div class="tecnologias">
-                <span>Flutter</span>
-                <span>Firebase</span>
-                <span>Dart</span>
-              </div>
-              <a href="#" class="btn open-modal" data-id="parkwise">Ver Detalhes</a>
-            </div>
-          </div>
-
-          <!-- Projeto Backend -->
-          <div class="projeto-card backend" data-aos="fade-up">
-            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/backend1.jpg')"></div>
-            <div class="projeto-info">
-              <span class="categoria">Backend</span>
-              <h3>Sistema de Autenticação</h3>
-              <p>
-                Sistema seguro de autenticação e autorização com múltiplos fatores.
-              </p>
-              <div class="tecnologias">
-                <span>Golang</span>
-                <span>JWT</span>
-                <span>PostgreSQL</span>
-              </div>
-              <a href="#" class="btn open-modal" data-id="auth-system">Ver Detalhes</a>
-            </div>
-          </div>
+        <div class="projetos-grid" id="projetos-grid">
+          <!-- Projetos serão inseridos via JS -->
         </div>
       </div>
     </section>
@@ -250,49 +148,8 @@
     <section id="habilidades">
       <div class="container">
         <h2 data-aos="fade-up">Habilidades e Ferramentas</h2>
-
-        <div class="habilidades-grid" data-aos="fade-up">
-          <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/html.svg" alt="Ícone HTML" loading="lazy" />
-            <h3>HTML5</h3>
-            <p>Estrutura e semântica</p>
-          </a>
-
-          <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/css.svg" alt="Ícone CSS" loading="lazy" />
-            <h3>CSS3</h3>
-            <p>Estilização e design</p>
-          </a>
-
-          <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/javascript.svg" alt="Ícone JavaScript" loading="lazy" />
-            <h3>JavaScript</h3>
-            <p>Lógica e interatividade</p>
-          </a>
-
-          <a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/flutter.svg" alt="Ícone Flutter" loading="lazy" />
-            <h3>Flutter</h3>
-            <p>Desenvolvimento mobile</p>
-          </a>
-
-          <a href="https://golang.org/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/golang.svg" alt="Ícone Golang" loading="lazy" />
-            <h3>Golang</h3>
-            <p>Servidores de alto desempenho</p>
-          </a>
-
-          <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/java.svg" alt="Ícone Java" loading="lazy" />
-            <h3>Java</h3>
-            <p>Aplicações empresariais</p>
-          </a>
-
-          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
-            <img src="assets/icons/python.svg" alt="Ícone Python" loading="lazy" />
-            <h3>Python</h3>
-            <p>Automação e data science</p>
-          </a>
+        <div class="habilidades-grid" id="habilidades-grid" data-aos="fade-up">
+          <!-- Habilidades serão inseridas via JS -->
         </div>
       </div>
     </section>
@@ -300,8 +157,8 @@
     <!-- Contato Section -->
     <section id="contato">
       <div class="container">
-        <h2 data-aos="fade-up">Contacto</h2>
-        <p data-aos="fade-up">
+        <h2 data-aos="fade-up" id="contact-title">Contacto</h2>
+        <p data-aos="fade-up" id="contact-description">
           Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.
         </p>
 
@@ -321,19 +178,8 @@
           <button type="submit" class="btn">Enviar Mensagem</button>
         </form>
 
-        <div class="redes-sociais" data-aos="fade-up">
-          <a href="https://facebook.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <img src="assets/icons/facebook.svg" alt="Facebook" />
-          </a>
-          <a href="https://twitter.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <img src="assets/icons/twitter.svg" alt="Twitter" />
-          </a>
-          <a href="https://linkedin.com/in/seuusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
-          </a>
-          <a href="https://github.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="assets/icons/github.svg" alt="GitHub" />
-          </a>
+        <div class="redes-sociais" id="social-links" data-aos="fade-up">
+          <!-- Links sociais serão inseridos via JS -->
         </div>
       </div>
     </section>
@@ -341,7 +187,7 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2024 Azam Usman. Todos os direitos reservados.</p>
+        <p id="footer-copyright">&copy; 2024 Azam Usman. Todos os direitos reservados.</p>
         <p>Desenvolvido com paixão e excelência técnica.</p>
       </div>
     </footer>
@@ -367,8 +213,8 @@
             <p class="modal-description"></p>
             <div class="modal-tech-list"></div>
             <div class="modal-buttons">
-              <a href="#" class="btn modal-btn-primary">Visitar Site</a>
-              <a href="#" class="btn modal-btn-secondary">Ver no GitHub</a>
+              <a href="#" class="btn modal-btn-primary" target="_blank" rel="noopener">Visitar Site</a>
+              <a href="#" class="btn modal-btn-secondary" target="_blank" rel="noopener">Ver no GitHub</a>
             </div>
           </div>
         </div>

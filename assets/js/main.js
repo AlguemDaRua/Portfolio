@@ -1,5 +1,173 @@
+// Variáveis globais para dados
+let profileData = {};
+let projectsData = [];
+let skillsData = [];
+
+// Função para carregar dados JSON
+async function loadData() {
+    try {
+        // Carregar todos os dados em paralelo
+        const [profile, projects, skills] = await Promise.all([
+            fetch('assets/data/profile.json').then(r => r.json()),
+            fetch('assets/data/projects.json').then(r => r.json()),
+            fetch('assets/data/skills.json').then(r => r.json())
+        ]);
+        
+        profileData = profile;
+        projectsData = projects.projects;
+        skillsData = skills.skills;
+        
+        // Renderizar os dados
+        renderProfile();
+        renderProjects();
+        renderSkills();
+        initializeEmailJS();
+        
+        return true;
+    } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+        return false;
+    }
+}
+
+// Renderizar dados do perfil
+function renderProfile() {
+    // Logo
+    const logoText = document.getElementById('logo-text');
+    if (logoText) logoText.textContent = profileData.name;
+    
+    // Hero
+    const heroTitle = document.getElementById('hero-title');
+    if (heroTitle) heroTitle.textContent = profileData.heroTitle;
+    
+    const heroTagline = document.getElementById('hero-tagline');
+    if (heroTagline) heroTagline.textContent = profileData.tagline;
+    
+    // Sobre
+    const profileImg = document.getElementById('profile-img');
+    if (profileImg) {
+        profileImg.src = profileData.about.profileImage;
+        profileImg.alt = `Foto de ${profileData.name}`;
+    }
+    
+    const bioText = document.getElementById('bio-text');
+    if (bioText) bioText.innerHTML = profileData.about.bio;
+    
+    // CVs
+    const cvButtons = document.getElementById('cv-buttons');
+    if (cvButtons && profileData.about.cvs) {
+        cvButtons.innerHTML = profileData.about.cvs.map(cv => `
+            <a href="${cv.file}" class="btn btn-cv" download="${cv.filename}">
+                <svg class="icon-btn" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/>
+                </svg>
+                ${cv.label}
+            </a>
+        `).join('');
+    }
+    
+    // Competências
+    const competenciesList = document.getElementById('competencies-list');
+    if (competenciesList && profileData.about.competencies) {
+        competenciesList.innerHTML = profileData.about.competencies.map(comp => `
+            <li>
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                </svg>
+                ${comp}
+            </li>
+        `).join('');
+    }
+    
+    // Links sociais
+    const socialLinks = document.getElementById('social-links');
+    if (socialLinks && profileData.social) {
+        socialLinks.innerHTML = `
+            <a href="${profileData.social.facebook}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <img src="assets/icons/facebook.svg" alt="Facebook" />
+            </a>
+            <a href="${profileData.social.twitter}" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <img src="assets/icons/twitter.svg" alt="Twitter" />
+            </a>
+            <a href="${profileData.social.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+            </a>
+            <a href="${profileData.social.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <img src="assets/icons/github.svg" alt="GitHub" />
+            </a>
+        `;
+    }
+    
+    // Footer
+    const footerCopyright = document.getElementById('footer-copyright');
+    if (footerCopyright) {
+        const year = new Date().getFullYear();
+        footerCopyright.textContent = `© ${year} ${profileData.name}. Todos os direitos reservados.`;
+    }
+    
+    // Título da página
+    document.title = `${profileData.name} | ${profileData.title}`;
+}
+
+// Renderizar projetos
+function renderProjects() {
+    const projetosGrid = document.getElementById('projetos-grid');
+    if (!projetosGrid) return;
+    
+    projetosGrid.innerHTML = projectsData.map(project => `
+        <div class="projeto-card ${project.category}" data-aos="fade-up">
+            <div class="projeto-imagem" style="background-image: url('${project.image}')"></div>
+            <div class="projeto-info">
+                <span class="categoria">${project.categoryLabel}</span>
+                <h3>${project.title}</h3>
+                <p>${project.shortDescription}</p>
+                <div class="tecnologias">
+                    ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+                </div>
+                <a href="#" class="btn open-modal" data-id="${project.id}">Ver Detalhes</a>
+            </div>
+        </div>
+    `).join('');
+    
+    // Re-anexar event listeners aos botões de modal
+    attachModalListeners();
+}
+
+// Renderizar habilidades
+function renderSkills() {
+    const habilidadesGrid = document.getElementById('habilidades-grid');
+    if (!habilidadesGrid) return;
+    
+    habilidadesGrid.innerHTML = skillsData.map(skill => `
+        <a href="${skill.url}" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="${skill.icon}" alt="Ícone ${skill.name}" loading="lazy" />
+            <h3>${skill.name}</h3>
+            <p>${skill.description}</p>
+            ${skill.level ? `
+                <div class="skill-level">
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: ${skill.level}%"></div>
+                    </div>
+                    <span class="skill-percent">${skill.level}%</span>
+                </div>
+            ` : ''}
+        </a>
+    `).join('');
+}
+
+// Inicializar EmailJS
+function initializeEmailJS() {
+    if (profileData.contact && profileData.contact.emailjs) {
+        emailjs.init(profileData.contact.emailjs.publicKey);
+    }
+}
+
 // Preloader
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
+    // Carregar dados primeiro
+    await loadData();
+    
+    // Esconder preloader
     const preloader = document.getElementById('preloader');
     setTimeout(() => {
         preloader.style.opacity = '0';
@@ -53,7 +221,6 @@ function toggleTheme(e) {
 
         const themeIcon = button.querySelector('img');
         themeIcon.src = newTheme === 'dark' ? 'assets/icons/sun.svg' : 'assets/icons/moon.svg';
-        themeIcon.alt = newTheme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro';
 
         setTimeout(() => {
             overlay.classList.remove('active');
@@ -61,45 +228,64 @@ function toggleTheme(e) {
     }, 500);
 }
 
-// Dados dos projectos para o modal
-const projectData = {
-    'ecommerce': {
-        title: 'Plataforma E-commerce',
-        category: 'Desenvolvimento Web',
-        description: 'Desenvolvimento de uma plataforma de comércio eletrónico de ponta. A aplicação apresenta uma interface de utilizador responsiva, um carrinho de compras funcional, gestão de produtos, integração de gateways de pagamento e um painel de administração para gestão de stock e pedidos. Construída com React para a interface do utilizador, Node.js e Express para o backend, e MongoDB para a base de dados, garantindo escalabilidade e desempenho.',
-        techs: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API'],
-        image: 'assets/images/projetos/web1.jpg',
-        siteLink: 'https://exemplo.com',
-        githubLink: 'https://github.com/seuusername/projeto'
-    },
-    'parkwise': {
-        title: 'ParkWISE',
-        category: 'Mobile',
-        description: 'Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real. O ParkWISE permite que os usuários encontrem vagas de estacionamento disponíveis, visualizem a ocupação em tempo real e paguem pelo estacionamento digitalmente. Utiliza Flutter para uma experiência fluida em iOS e Android e Firebase para autenticação de utilizadores, armazenamento de dados em tempo real e hospedagem.',
-        techs: ['Flutter', 'Firebase', 'Dart', 'Google Maps API'],
-        image: 'assets/images/projetos/parkwise.png',
-        siteLink: 'https://exemplo.com',
-        githubLink: 'https://github.com/seuusername/parkwise'
-    },
-    'auth-system': {
-        title: 'Sistema de Autenticação',
-        category: 'Backend',
-        description: 'Criação de um sistema robusto e seguro para autenticação e autorização de utilizadores. O sistema lida com o registo, login, redefinição de palavra-passe e gestão de tokens de sessão. Projetado com Golang para alto desempenho e concorrência, utiliza JWT para segurança e armazena credenciais e dados de utilizadores em um banco de dados PostgreSQL.',
-        techs: ['Golang', 'JWT', 'PostgreSQL', 'Docker', 'REST API'],
-        image: 'assets/images/projetos/backend1.jpg',
-        siteLink: 'https://exemplo.com',
-        githubLink: 'https://github.com/seuusername/auth-system'
-    }
-};
+// Função para anexar listeners aos modais
+function attachModalListeners() {
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = button.getAttribute('data-id');
+            const project = projectsData.find(p => p.id === projectId);
 
-// Inicializar
+            if (project) {
+                openProjectModal(project);
+            }
+        });
+    });
+}
+
+// Abrir modal de projeto
+function openProjectModal(project) {
+    const modalOverlay = document.querySelector('.project-modal-overlay');
+    
+    // Preencher dados do modal
+    document.querySelector('.modal-image').src = project.image;
+    document.querySelector('.modal-image').alt = project.title;
+    document.querySelector('.modal-category').textContent = project.categoryLabel;
+    document.querySelector('.modal-title').textContent = project.title;
+    document.querySelector('.modal-description').textContent = project.fullDescription;
+
+    // Tecnologias
+    const techList = document.querySelector('.modal-tech-list');
+    techList.innerHTML = project.technologies.map(tech => `<span>${tech}</span>`).join('');
+
+    // Botões
+    const primaryBtn = document.querySelector('.modal-btn-primary');
+    const secondaryBtn = document.querySelector('.modal-btn-secondary');
+    
+    if (project.liveUrl) {
+        primaryBtn.style.display = 'inline-flex';
+        primaryBtn.href = project.liveUrl;
+    } else {
+        primaryBtn.style.display = 'none';
+    }
+    
+    if (project.githubUrl) {
+        secondaryBtn.style.display = 'inline-flex';
+        secondaryBtn.href = project.githubUrl;
+    } else {
+        secondaryBtn.style.display = 'none';
+    }
+
+    // Mostrar modal
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Inicializar quando DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
     applySavedTheme();
-
-    // Inicializar EmailJS com configuração segura
-    if (typeof EMAIL_CONFIG !== 'undefined' && EMAIL_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
-        emailjs.init(EMAIL_CONFIG.publicKey);
-    }
 
     // Botão voltar ao topo
     const backToTopButton = document.getElementById('back-to-top');
@@ -108,25 +294,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPosition = window.pageYOffset;
 
         if (scrollPosition > 500) {
-            backToTopButton.style.display = 'flex';
-            backToTopButton.style.opacity = '1';
             backToTopButton.classList.add('visible');
         } else {
-            backToTopButton.style.opacity = '0';
-            setTimeout(() => {
-                if (window.pageYOffset <= 500) {
-                    backToTopButton.style.display = 'none';
-                    backToTopButton.classList.remove('visible');
-                }
-            }, 300);
+            backToTopButton.classList.remove('visible');
         }
     });
 
     backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Menu responsivo
@@ -134,11 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.createElement('div');
     mobileMenu.classList.add('mobile-menu');
 
-    // Copiar o menu principal para o mobile
+    // Copiar menu para mobile
     const navList = document.querySelector('.nav-center ul').cloneNode(true);
     mobileMenu.appendChild(navList);
 
-    // Adicionar botão de tema ao menu mobile
+    // Adicionar botão de tema
     const themeToggleContainer = document.createElement('div');
     themeToggleContainer.classList.add('mobile-theme-toggle');
     const themeButton = document.querySelector('#toggle-theme').cloneNode(true);
@@ -151,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
     });
 
     // Fechar menu ao clicar nos links
@@ -160,22 +334,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
         });
     });
 
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('active') &&
-            !e.target.closest('.mobile-menu') &&
-            !e.target.closest('.menu-toggle')) {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    });
-
-    // Scroll suave para âncoras
+    // Scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -198,28 +360,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtro de Projetos
     const filtroBtns = document.querySelectorAll('.filtro-projetos .btn');
-    const projetos = document.querySelectorAll('.projeto-card');
-    const projetosGrid = document.querySelector('.projetos-grid');
-
+    
     filtroBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filtroBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             const filtro = btn.getAttribute('data-filter');
-            projetosGrid.style.opacity = '0.5';
+            const projetos = document.querySelectorAll('.projeto-card');
 
-            setTimeout(() => {
-                projetos.forEach(projeto => {
-                    if (filtro === 'todos' || projeto.classList.contains(filtro)) {
-                        projeto.style.display = 'block';
-                        setTimeout(() => projeto.style.opacity = '1', 50);
-                    } else {
-                        projeto.style.display = 'none';
-                    }
-                });
-                projetosGrid.style.opacity = '1';
-            }, 300);
+            projetos.forEach(projeto => {
+                if (filtro === 'todos' || projeto.classList.contains(filtro)) {
+                    projeto.style.display = 'block';
+                } else {
+                    projeto.style.display = 'none';
+                }
+            });
         });
     });
 
@@ -230,62 +386,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleThemeButton.addEventListener('click', toggleTheme);
     mobileToggleThemeButton.addEventListener('click', toggleTheme);
 
-    // Lógica do Modal de Projetos
-    const projectModalOverlay = document.querySelector('.project-modal-overlay');
-    const openModalButtons = document.querySelectorAll('.open-modal');
+    // Modal de projetos
+    const modalOverlay = document.querySelector('.project-modal-overlay');
     const closeModalButton = document.querySelector('.modal-close-btn');
 
-    openModalButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectId = button.getAttribute('data-id');
-            const project = projectData[projectId];
-
-            if (project) {
-                // Preencher o modal com os dados do projeto
-                document.querySelector('.modal-image').src = project.image;
-                document.querySelector('.modal-image').alt = project.title;
-                document.querySelector('.modal-category').textContent = project.category;
-                document.querySelector('.modal-title').textContent = project.title;
-                document.querySelector('.modal-description').textContent = project.description;
-
-                // Preencher tecnologias
-                const techList = document.querySelector('.modal-tech-list');
-                techList.innerHTML = '';
-                project.techs.forEach(tech => {
-                    const span = document.createElement('span');
-                    span.textContent = tech;
-                    techList.appendChild(span);
-                });
-
-                // Atualizar links
-                document.querySelector('.modal-btn-primary').href = project.siteLink;
-                document.querySelector('.modal-btn-secondary').href = project.githubLink;
-
-                // Mostrar o modal
-                projectModalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
-
-    // Fechar modal
     const closeModal = () => {
-        projectModalOverlay.classList.remove('active');
+        modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
     };
 
     closeModalButton.addEventListener('click', closeModal);
-
-    projectModalOverlay.addEventListener('click', (e) => {
-        if (e.target === projectModalOverlay) {
-            closeModal();
-        }
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
     });
 
-    // Fechar modal com ESC
+    // ESC para fechar modal
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && projectModalOverlay.classList.contains('active')) {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             closeModal();
         }
     });
@@ -296,12 +413,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', function (event) {
             event.preventDefault();
-
-            // Verificar se o EmailJS está configurado
-            if (typeof EMAIL_CONFIG === 'undefined' || EMAIL_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
-                alert('Por favor, configure o EmailJS primeiro no arquivo config/email-config.js');
-                return;
-            }
 
             const nome = this.nome.value.trim();
             const email = this.email.value.trim();
@@ -316,75 +427,27 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.disabled = true;
             btnSubmit.textContent = 'Enviando...';
 
-            // Preparar parâmetros
             const templateParams = {
                 from_name: nome,
                 from_email: email,
                 message: mensagem,
-                to_name: 'Azam Usman'
+                to_name: profileData.name
             };
 
-            emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, templateParams)
-                .then(() => {
-                    alert('Mensagem enviada com sucesso!');
-                    this.reset();
-                }, (error) => {
-                    console.error('Erro:', error);
-                    alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.');
-                })
-                .finally(() => {
-                    btnSubmit.disabled = false;
-                    btnSubmit.textContent = 'Enviar Mensagem';
-                });
-        });
-    }
-
-    // Lazy loading de imagens
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.classList.add('fade-in');
-                    observer.unobserve(img);
-                }
+            emailjs.send(
+                profileData.contact.emailjs.serviceId, 
+                profileData.contact.emailjs.templateId, 
+                templateParams
+            ).then(() => {
+                alert('Mensagem enviada com sucesso!');
+                this.reset();
+            }, (error) => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar a mensagem.');
+            }).finally(() => {
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = 'Enviar Mensagem';
             });
         });
-
-        document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
     }
 });
-
-// Configuração EmailJS - Chaves públicas, seguro para comitar
-const EMAIL_CONFIG = {
-    publicKey: '0I9u8gF_tTbJuC-EI',  // Tua chave real
-    serviceId: 'myomg',               // Teu service real
-    templateId: 'template'            // Teu template real
-};
-
-// Inicializar EmailJS
-document.addEventListener('DOMContentLoaded', () => {
-    emailjs.init(EMAIL_CONFIG.publicKey);
-    
-    // Resto do código...
-});
-
-// Adicionar classe fade-in para animações
-const style = document.createElement('style');
-style.textContent = `
-    .fade-in {
-        animation: fadeIn 0.5s ease-in;
-    }
-    
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);

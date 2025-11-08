@@ -1,0 +1,85 @@
+{
+  "skills": [
+    {
+      "id": "html",
+      "name": "HTML5",
+      "description": "Estrutura e semântica",
+      "icon": "assets/icons/html.svg",
+      "level": 95,
+      "category": "frontend",
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTML"
+    },
+    {
+      "id": "css",
+      "name": "CSS3",
+      "description": "Estilização e design",
+      "icon": "assets/icons/css.svg",
+      "level": 90,
+      "category": "frontend",
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "description": "Lógica e interatividade",
+      "icon": "assets/icons/javascript.svg",
+      "level": 85,
+      "category": "frontend",
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+    },
+    {
+      "id": "flutter",
+      "name": "Flutter",
+      "description": "Desenvolvimento mobile",
+      "icon": "assets/icons/flutter.svg",
+      "level": 80,
+      "category": "mobile",
+      "url": "https://flutter.dev/"
+    },
+    {
+      "id": "golang",
+      "name": "Golang",
+      "description": "Servidores de alto desempenho",
+      "icon": "assets/icons/golang.svg",
+      "level": 75,
+      "category": "backend",
+      "url": "https://golang.org/"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "description": "Aplicações empresariais",
+      "icon": "assets/icons/java.svg",
+      "level": 85,
+      "category": "backend",
+      "url": "https://www.java.com/"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "description": "Automação e data science",
+      "icon": "assets/icons/python.svg",
+      "level": 88,
+      "category": "backend",
+      "url": "https://www.python.org/"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "description": "Desenvolvimento de UI",
+      "icon": "assets/icons/react.svg",
+      "level": 82,
+      "category": "frontend",
+      "url": "https://react.dev/"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "description": "JavaScript no servidor",
+      "icon": "assets/icons/nodejs.svg",
+      "level": 78,
+      "category": "backend",
+      "url": "https://nodejs.org/"
+    }
+  ]
+}

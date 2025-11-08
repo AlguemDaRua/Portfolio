@@ -1150,3 +1150,44 @@ body.dark-mode .modal-tech-list span {
     width: 100%;
   }
 }
+
+/* Barra de nível de habilidade */
+.skill-level {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+body.dark-mode .skill-bar {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--cor-primaria);
+    border-radius: 3px;
+    transition: width 1s ease;
+}
+
+.skill-percent {
+    font-size: 0.8rem;
+    color: var(--cor-texto-claro);
+    display: block;
+    margin-top: 5px;
+}
+
+/* Animação das barras quando visíveis */
+.habilidade-card:hover .skill-progress {
+    animation: fillBar 1s ease-out;
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+}
