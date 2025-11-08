@@ -1,8 +1,12 @@
-// Preloader SIMPLIFICADO (sem animações complexas)
+// Preloader
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
-    // Esconde o preloader imediatamente
-    preloader.style.display = 'none';
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }, 500);
 });
 
 // Verificar e aplicar tema salvo
@@ -13,17 +17,17 @@ function applySavedTheme() {
     if (!savedTheme) {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark-mode');
-            toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
+            toggleThemeButton.querySelector('img').src = 'assets/icons/sun.svg';
         }
         return;
     }
 
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        toggleThemeButton.querySelector('img').src = 'icons/sun.svg';
+        toggleThemeButton.querySelector('img').src = 'assets/icons/sun.svg';
     } else {
         document.body.classList.remove('dark-mode');
-        toggleThemeButton.querySelector('img').src = 'icons/moon.svg';
+        toggleThemeButton.querySelector('img').src = 'assets/icons/moon.svg';
     }
 }
 
@@ -43,22 +47,19 @@ function toggleTheme(e) {
     overlay.style.setProperty('--pos-y', `${y}px`);
     overlay.classList.add('active');
 
-    // Mudar o tema após a animação
     setTimeout(() => {
         document.body.classList.toggle('dark-mode');
         localStorage.setItem('theme', newTheme);
 
         const themeIcon = button.querySelector('img');
-        themeIcon.src = newTheme === 'dark' ? 'icons/sun.svg' : 'icons/moon.svg';
+        themeIcon.src = newTheme === 'dark' ? 'assets/icons/sun.svg' : 'assets/icons/moon.svg';
         themeIcon.alt = newTheme === 'dark' ? 'Alternar para modo claro' : 'Alternar para modo escuro';
 
-        // Remover a classe active após a animação
         setTimeout(() => {
             overlay.classList.remove('active');
         }, 100);
     }, 500);
 }
-
 
 // Dados dos projectos para o modal
 const projectData = {
@@ -67,33 +68,38 @@ const projectData = {
         category: 'Desenvolvimento Web',
         description: 'Desenvolvimento de uma plataforma de comércio eletrónico de ponta. A aplicação apresenta uma interface de utilizador responsiva, um carrinho de compras funcional, gestão de produtos, integração de gateways de pagamento e um painel de administração para gestão de stock e pedidos. Construída com React para a interface do utilizador, Node.js e Express para o backend, e MongoDB para a base de dados, garantindo escalabilidade e desempenho.',
         techs: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API'],
-        image: '/images/projetos/web1.jpg',
-        siteLink: '#',
-        githubLink: '#'
+        image: 'assets/images/projetos/web1.jpg',
+        siteLink: 'https://exemplo.com',
+        githubLink: 'https://github.com/seuusername/projeto'
     },
     'parkwise': {
         title: 'ParkWISE',
         category: 'Mobile',
         description: 'Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real. O ParkWISE permite que os usuários encontrem vagas de estacionamento disponíveis, visualizem a ocupação em tempo real e paguem pelo estacionamento digitalmente. Utiliza Flutter para uma experiência fluida em iOS e Android e Firebase para autenticação de utilizadores, armazenamento de dados em tempo real e hospedagem.',
         techs: ['Flutter', 'Firebase', 'Dart', 'Google Maps API'],
-        image: '/images/projetos/parkwise.png',
-        siteLink: '#',
-        githubLink: '#'
+        image: 'assets/images/projetos/parkwise.png',
+        siteLink: 'https://exemplo.com',
+        githubLink: 'https://github.com/seuusername/parkwise'
     },
     'auth-system': {
         title: 'Sistema de Autenticação',
         category: 'Backend',
         description: 'Criação de um sistema robusto e seguro para autenticação e autorização de utilizadores. O sistema lida com o registo, login, redefinição de palavra-passe e gestão de tokens de sessão. Projetado com Golang para alto desempenho e concorrência, utiliza JWT para segurança e armazena credenciais e dados de utilizadores em um banco de dados PostgreSQL.',
         techs: ['Golang', 'JWT', 'PostgreSQL', 'Docker', 'REST API'],
-        image: '/images/projetos/backend1.jpg',
-        siteLink: '#',
-        githubLink: '#'
+        image: 'assets/images/projetos/backend1.jpg',
+        siteLink: 'https://exemplo.com',
+        githubLink: 'https://github.com/seuusername/auth-system'
     }
 };
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
     applySavedTheme();
+
+    // Inicializar EmailJS com configuração segura
+    if (typeof EMAIL_CONFIG !== 'undefined' && EMAIL_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
+        emailjs.init(EMAIL_CONFIG.publicKey);
+    }
 
     // Botão voltar ao topo
     const backToTopButton = document.getElementById('back-to-top');
@@ -173,9 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
@@ -216,19 +232,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lógica do Modal de Projetos
     const projectModalOverlay = document.querySelector('.project-modal-overlay');
-    const projectModal = document.querySelector('.project-modal');
     const openModalButtons = document.querySelectorAll('.open-modal');
     const closeModalButton = document.querySelector('.modal-close-btn');
 
     openModalButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const projectId = e.target.getAttribute('data-id');
+            const projectId = button.getAttribute('data-id');
             const project = projectData[projectId];
 
             if (project) {
                 // Preencher o modal com os dados do projeto
                 document.querySelector('.modal-image').src = project.image;
+                document.querySelector('.modal-image').alt = project.title;
                 document.querySelector('.modal-category').textContent = project.category;
                 document.querySelector('.modal-title').textContent = project.title;
                 document.querySelector('.modal-description').textContent = project.description;
@@ -248,61 +264,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Mostrar o modal
                 projectModalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Evita scroll no corpo
+                document.body.style.overflow = 'hidden';
             }
         });
     });
 
     // Fechar modal
     const closeModal = () => {
-        projectModalOverlay.classList.add('closing'); // Adiciona classe para a animação de fecho
-        projectModalOverlay.addEventListener('transitionend', () => {
-            projectModalOverlay.classList.remove('active', 'closing');
-            document.body.style.overflow = '';
-        }, { once: true }); // Garante que o evento só é executado uma vez
+        projectModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     };
 
     closeModalButton.addEventListener('click', closeModal);
 
     projectModalOverlay.addEventListener('click', (e) => {
-        // Fechar o modal se o clique for no overlay e não no modal em si
         if (e.target === projectModalOverlay) {
             closeModal();
         }
     });
 
-    // Inicializar EmailJS
-    (function () {
-        emailjs.init('SEU_PUBLIC_KEY');
-    })();
+    // Fechar modal com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projectModalOverlay.classList.contains('active')) {
+            closeModal();
+        }
+    });
 
     // Formulário de contato
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-        event.preventDefault();
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        const nome = this.nome.value.trim();
-        const email = this.email.value.trim();
-        const mensagem = this.mensagem.value.trim();
+            // Verificar se o EmailJS está configurado
+            if (typeof EMAIL_CONFIG === 'undefined' || EMAIL_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
+                alert('Por favor, configure o EmailJS primeiro no arquivo config/email-config.js');
+                return;
+            }
 
-        if (!nome || !email || !mensagem) {
-            alert('Por favor, preencha todos os campos.');
-            return;
-        }
+            const nome = this.nome.value.trim();
+            const email = this.email.value.trim();
+            const mensagem = this.mensagem.value.trim();
 
-        const btnSubmit = this.querySelector('button[type="submit"]');
-        btnSubmit.disabled = true;
-        btnSubmit.textContent = 'Enviando...';
+            if (!nome || !email || !mensagem) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
 
-        emailjs.sendForm('myomg', 'template', this)
-            .then(() => {
-                alert('Mensagem enviada com sucesso!');
-                this.reset();
-            }, (error) => {
-                alert('Ocorreu um erro ao enviar a mensagem: ' + error.text);
-            })
-            .finally(() => {
-                btnSubmit.disabled = false;
-                btnSubmit.textContent = 'Enviar Mensagem';
+            const btnSubmit = this.querySelector('button[type="submit"]');
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'Enviando...';
+
+            // Preparar parâmetros
+            const templateParams = {
+                from_name: nome,
+                from_email: email,
+                message: mensagem,
+                to_name: 'Azam Usman'
+            };
+
+            emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, templateParams)
+                .then(() => {
+                    alert('Mensagem enviada com sucesso!');
+                    this.reset();
+                }, (error) => {
+                    console.error('Erro:', error);
+                    alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.');
+                })
+                .finally(() => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'Enviar Mensagem';
+                });
+        });
+    }
+
+    // Lazy loading de imagens
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('fade-in');
+                    observer.unobserve(img);
+                }
             });
-    });
+        });
+
+        document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
+    }
 });
+
+// Configuração EmailJS - Chaves públicas, seguro para comitar
+const EMAIL_CONFIG = {
+    publicKey: '0I9u8gF_tTbJuC-EI',  // Tua chave real
+    serviceId: 'myomg',               // Teu service real
+    templateId: 'template'            // Teu template real
+};
+
+// Inicializar EmailJS
+document.addEventListener('DOMContentLoaded', () => {
+    emailjs.init(EMAIL_CONFIG.publicKey);
+    
+    // Resto do código...
+});
+
+// Adicionar classe fade-in para animações
+const style = document.createElement('style');
+style.textContent = `
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);

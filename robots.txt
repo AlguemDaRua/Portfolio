@@ -1,0 +1,10 @@
+# Robots.txt para Portfolio
+User-agent: *
+Allow: /
+
+# Bloquear acesso a arquivos sensíveis
+Disallow: /config/
+Disallow: /*.pdf$
+
+# Sitemap
+Sitemap: https://seuusername.github.io/sitemap.xml

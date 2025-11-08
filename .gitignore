@@ -1,20 +1,37 @@
-# Node modules
-node_modules/
-
 # Logs
 logs
 *.log
 
-# Sistema
+# Arquivos sensíveis - IMPORTANTE!
+.env
+.env.local
+
+# Arquivos do sistema
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# VSCode
-.vscode/
-
-# Arquivos de build
+# Dependências
+node_modules/
 dist/
 build/
 
-# Sensíveis
-.env
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e temporários
+*.log
+*.tmp
+npm-debug.log*
+
+# Arquivos de teste
+coverage/
+.nyc_output
+
+# Arquivos pessoais
+personal/
+private/

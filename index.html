@@ -2,50 +2,62 @@
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
-    <title>Azam Usman | Software Dev</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta
-      name="description"
-      content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile"
-    />
-    <meta
-      name="keywords"
-      content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique"
-    />
+    <title>Azam Usman | Software Developer</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile. Transformando ideias em realidade digital." />
+    <meta name="keywords" content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique, Software Developer" />
     <meta name="author" content="Azam Usman" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init({
-          publicKey: "0I9u8gF_tTbJuC-EI",
-        });
-      })();
-    </script>
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://seuusername.github.io/" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Azam Usman | Software Developer" />
+    <meta property="og:description" content="Portfólio profissional - Desenvolvimento Web & Mobile" />
+    <meta property="og:image" content="https://seuusername.github.io/assets/images/og-image.jpg" />
+    <meta property="og:url" content="https://seuusername.github.io/" />
+    <meta property="og:site_name" content="Azam Usman Portfolio" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Azam Usman | Software Developer" />
+    <meta name="twitter:description" content="Portfólio profissional - Desenvolvimento Web & Mobile" />
+    <meta name="twitter:image" content="https://seuusername.github.io/assets/images/og-image.jpg" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
+    
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   </head>
+  
   <body>
+    <!-- Overlay para transição de tema -->
     <div class="theme-wave-overlay"></div>
 
+    <!-- Preloader -->
     <div id="preloader">
       <div class="spinner"></div>
     </div>
 
+    <!-- Header -->
     <header>
       <nav>
         <div class="nav-container">
@@ -65,7 +77,7 @@
 
           <div class="nav-right">
             <button id="toggle-theme" aria-label="Alternar tema">
-              <img src="icons/moon.svg" alt="Ícone tema" />
+              <img src="assets/icons/moon.svg" alt="Ícone tema" />
             </button>
           </div>
 
@@ -78,6 +90,7 @@
       </nav>
     </header>
 
+    <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="hero-content" data-aos="fade-up">
         <h1>Transformando Ideias em Realidade Digital</h1>
@@ -92,19 +105,24 @@
       </div>
     </section>
 
+    <!-- Sobre Section -->
     <section id="sobre">
       <div class="container">
         <h2 data-aos="fade-up">Sobre Mim</h2>
         <div class="sobre-content" data-aos="fade-up">
           <div class="profile-image">
-            <img src="/images/meuperfil.jpg" alt="Foto de Azam Usman" />
+            <img src="assets/images/profile/meuperfil.jpg" alt="Foto de Azam Usman" loading="lazy" />
             <div class="cv-buttons">
-              <a href="Azam-Usman-CV-PT.pdf" class="btn btn-cv" download>
-                <img src="icons/download.svg" class="icon-btn" />
+              <a href="assets/docs/cv-pt.pdf" class="btn btn-cv" download="Azam-Usman-CV-PT.pdf">
+                <svg class="icon-btn" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/>
+                </svg>
                 Download CV (PT)
               </a>
-              <a href="Azam-Usman-CV-EN.pdf" class="btn btn-cv" download>
-                <img src="icons/download.svg" class="icon-btn" />
+              <a href="assets/docs/cv-en.pdf" class="btn btn-cv" download="Azam-Usman-CV-EN.pdf">
+                <svg class="icon-btn" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/>
+                </svg>
                 Download CV (EN)
               </a>
             </div>
@@ -120,11 +138,36 @@
             <div class="skills">
               <h3>Competências Técnicas</h3>
               <ul>
-                <li>Desenvolvimento Web (HTML5, CSS3, JavaScript)</li>
-                <li>Desenvolvimento Mobile com Flutter</li>
-                <li>Java para aplicações empresariais</li>
-                <li>Python para análise de dados e automação</li>
-                <li>Golang para sistemas de alto desempenho</li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                  </svg>
+                  Desenvolvimento Web (HTML5, CSS3, JavaScript)
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                  </svg>
+                  Desenvolvimento Mobile com Flutter
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                  </svg>
+                  Java para aplicações empresariais
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                  </svg>
+                  Python para análise de dados e automação
+                </li>
+                <li>
+                  <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                  </svg>
+                  Golang para sistemas de alto desempenho
+                </li>
               </ul>
             </div>
           </div>
@@ -132,6 +175,7 @@
       </div>
     </section>
 
+    <!-- Projetos Section -->
     <section id="projetos">
       <div class="container">
         <h2 data-aos="fade-up">Projectos Recentes</h2>
@@ -144,11 +188,9 @@
         </div>
 
         <div class="projetos-grid">
+          <!-- Projeto Web -->
           <div class="projeto-card web" data-aos="fade-up">
-            <div
-              class="projeto-imagem"
-              style="background-image: url('/images/projetos/web1.jpg')"
-            ></div>
+            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/web1.jpg')"></div>
             <div class="projeto-info">
               <span class="categoria">Desenvolvimento Web</span>
               <h3>Plataforma E-commerce</h3>
@@ -165,16 +207,14 @@
             </div>
           </div>
 
+          <!-- Projeto Mobile -->
           <div class="projeto-card mobile" data-aos="fade-up">
-            <div
-              class="projeto-imagem"
-              style="background-image: url('/images/projetos/parkwise.png')"
-            ></div>
+            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/parkwise.png')"></div>
             <div class="projeto-info">
               <span class="categoria">Mobile</span>
               <h3>ParkWISE</h3>
               <p>
-                Aplicativo móvel para monitoramento e gestao de estacionamento em tempo real.
+                Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real.
               </p>
               <div class="tecnologias">
                 <span>Flutter</span>
@@ -185,17 +225,14 @@
             </div>
           </div>
 
+          <!-- Projeto Backend -->
           <div class="projeto-card backend" data-aos="fade-up">
-            <div
-              class="projeto-imagem"
-              style="background-image: url('/images/projetos/backend1.jpg')"
-            ></div>
+            <div class="projeto-imagem" style="background-image: url('assets/images/projetos/backend1.jpg')"></div>
             <div class="projeto-info">
               <span class="categoria">Backend</span>
               <h3>Sistema de Autenticação</h3>
               <p>
-                Sistema seguro de autenticação e autorização com múltiplos
-                fatores.
+                Sistema seguro de autenticação e autorização com múltiplos fatores.
               </p>
               <div class="tecnologias">
                 <span>Golang</span>
@@ -209,73 +246,50 @@
       </div>
     </section>
 
+    <!-- Habilidades Section -->
     <section id="habilidades">
       <div class="container">
         <h2 data-aos="fade-up">Habilidades e Ferramentas</h2>
 
         <div class="habilidades-grid" data-aos="fade-up">
-          <a
-            href="https://developer.mozilla.org/pt-BR/docs/Web/HTML"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/html.svg" alt="Ícone HTML" />
+          <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/html.svg" alt="Ícone HTML" loading="lazy" />
             <h3>HTML5</h3>
             <p>Estrutura e semântica</p>
           </a>
 
-          <a
-            href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/css.svg" alt="Ícone CSS" />
+          <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/css.svg" alt="Ícone CSS" loading="lazy" />
             <h3>CSS3</h3>
             <p>Estilização e design</p>
           </a>
 
-          <a
-            href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/javascript.svg" alt="Ícone JavaScript" />
+          <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/javascript.svg" alt="Ícone JavaScript" loading="lazy" />
             <h3>JavaScript</h3>
             <p>Lógica e interatividade</p>
           </a>
 
-          <a
-            href="https://flutter.dev/"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/flutter.svg" alt="Ícone Flutter" />
+          <a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/flutter.svg" alt="Ícone Flutter" loading="lazy" />
             <h3>Flutter</h3>
             <p>Desenvolvimento mobile</p>
           </a>
 
-          <a href="https://golang.org/" target="_blank" class="habilidade-card">
-            <img src="icons/golang.svg" alt="Ícone Golang" />
+          <a href="https://golang.org/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/golang.svg" alt="Ícone Golang" loading="lazy" />
             <h3>Golang</h3>
             <p>Servidores de alto desempenho</p>
           </a>
 
-          <a
-            href="https://www.java.com/"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/java.svg" alt="Ícone Java" />
+          <a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/java.svg" alt="Ícone Java" loading="lazy" />
             <h3>Java</h3>
             <p>Aplicações empresariais</p>
           </a>
 
-          <a
-            href="https://www.python.org/"
-            target="_blank"
-            class="habilidade-card"
-          >
-            <img src="icons/python.svg" alt="Ícone Python" />
+          <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="habilidade-card">
+            <img src="assets/icons/python.svg" alt="Ícone Python" loading="lazy" />
             <h3>Python</h3>
             <p>Automação e data science</p>
           </a>
@@ -283,79 +297,63 @@
       </div>
     </section>
 
+    <!-- Contato Section -->
     <section id="contato">
       <div class="container">
         <h2 data-aos="fade-up">Contacto</h2>
         <p data-aos="fade-up">
-          Para propostas de colaboração ou esclarecimentos adicionais, envie a
-          sua mensagem.
+          Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.
         </p>
 
         <form id="contact-form" data-aos="fade-up">
           <div class="form-group">
-            <input
-              type="text"
-              name="nome"
-              placeholder="Nome completo"
-              required
-            />
+            <input type="text" name="nome" placeholder="Nome completo" required />
           </div>
 
           <div class="form-group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Endereço electrónico"
-              required
-            />
+            <input type="email" name="email" placeholder="Endereço electrónico" required />
           </div>
 
           <div class="form-group">
-            <textarea
-              name="mensagem"
-              placeholder="Mensagem"
-              rows="5"
-              required
-            ></textarea>
+            <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
           </div>
 
           <button type="submit" class="btn">Enviar Mensagem</button>
         </form>
 
         <div class="redes-sociais" data-aos="fade-up">
-          <a href="#" aria-label="Facebook"
-            ><img src="icons/facebook.svg" alt="Facebook"
-          /></a>
-          <a href="#" aria-label="Twitter"
-            ><img src="icons/twitter.svg" alt="Twitter"
-          /></a>
-          <a href="#" aria-label="LinkedIn"
-            ><img src="icons/linkedin.svg" alt="LinkedIn"
-          /></a>
-          <a href="#" aria-label="GitHub"
-            ><img src="icons/github.svg" alt="GitHub"
-          /></a>
+          <a href="https://facebook.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="assets/icons/facebook.svg" alt="Facebook" />
+          </a>
+          <a href="https://twitter.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <img src="assets/icons/twitter.svg" alt="Twitter" />
+          </a>
+          <a href="https://linkedin.com/in/seuusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="assets/icons/linkedin.svg" alt="LinkedIn" />
+          </a>
+          <a href="https://github.com/seuusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="assets/icons/github.svg" alt="GitHub" />
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2023 Azam Usman. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Azam Usman. Todos os direitos reservados.</p>
         <p>Desenvolvido com paixão e excelência técnica.</p>
       </div>
     </footer>
 
+    <!-- Botão voltar ao topo -->
     <button id="back-to-top" aria-label="Voltar ao topo">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" />
       </svg>
     </button>
 
+    <!-- Modal de Projetos -->
     <div class="project-modal-overlay">
       <div class="project-modal">
         <button class="modal-close-btn">&times;</button>
@@ -377,7 +375,8 @@
       </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
       AOS.init({
