@@ -1,50 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azam Usman | Software Developer</title>
-    
+
     <!-- Meta Tags SEO -->
-    <meta name="description" content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile. Transformando ideias em realidade digital." />
-    <meta name="keywords" content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique, Software Developer" />
+    <meta
+      name="description"
+      content="Portfólio profissional de Azam Usman, especialista em desenvolvimento web e mobile. Transformando ideias em realidade digital."
+    />
+    <meta
+      name="keywords"
+      content="Desenvolvedor Web, Flutter, Java, Python, Golang, Portfólio, Moçambique, Software Developer"
+    />
     <meta name="author" content="Azam Usman" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://seuusername.github.io/" />
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Azam Usman | Software Developer" />
-    <meta property="og:description" content="Portfólio profissional - Desenvolvimento Web & Mobile" />
-    <meta property="og:image" content="https://seuusername.github.io/assets/images/og-image.jpg" />
+    <meta
+      property="og:description"
+      content="Portfólio profissional - Desenvolvimento Web & Mobile"
+    />
+    <meta
+      property="og:image"
+      content="https://seuusername.github.io/assets/images/og-image.jpg"
+    />
     <meta property="og:url" content="https://seuusername.github.io/" />
     <meta property="og:site_name" content="Azam Usman Portfolio" />
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Azam Usman | Software Developer" />
-    <meta name="twitter:description" content="Portfólio profissional - Desenvolvimento Web & Mobile" />
-    <meta name="twitter:image" content="https://seuusername.github.io/assets/images/og-image.jpg" />
-    
+    <meta
+      name="twitter:description"
+      content="Portfólio profissional - Desenvolvimento Web & Mobile"
+    />
+    <meta
+      name="twitter:image"
+      content="https://seuusername.github.io/assets/images/og-image.jpg"
+    />
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
-    
+
     <!-- Preconnect para performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-    
+
     <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
     <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
   </head>
-  
+
   <body>
     <!-- Overlay para transição de tema -->
     <div class="theme-wave-overlay"></div>
@@ -127,15 +154,14 @@
     </section>
 
     <!-- Projetos Section -->
+    <!-- Na secção de projetos, remover os filtros hardcoded -->
     <section id="projetos">
       <div class="container">
         <h2 data-aos="fade-up">Projectos Recentes</h2>
 
+        <!-- Filtros serão inseridos dinamicamente via JavaScript -->
         <div class="filtro-projetos" data-aos="fade-up">
-          <button data-filter="todos" class="btn active">Todos</button>
-          <button data-filter="web" class="btn">Web</button>
-          <button data-filter="mobile" class="btn">Mobile</button>
-          <button data-filter="backend" class="btn">Backend</button>
+          <!-- Carregando filtros... -->
         </div>
 
         <div class="projetos-grid" id="projetos-grid">
@@ -159,20 +185,36 @@
       <div class="container">
         <h2 data-aos="fade-up" id="contact-title">Contacto</h2>
         <p data-aos="fade-up" id="contact-description">
-          Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.
+          Para propostas de colaboração ou esclarecimentos adicionais, envie a
+          sua mensagem.
         </p>
 
         <form id="contact-form" data-aos="fade-up">
           <div class="form-group">
-            <input type="text" name="nome" placeholder="Nome completo" required />
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome completo"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <input type="email" name="email" placeholder="Endereço electrónico" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Endereço electrónico"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+            <textarea
+              name="mensagem"
+              placeholder="Mensagem"
+              rows="5"
+              required
+            ></textarea>
           </div>
 
           <button type="submit" class="btn">Enviar Mensagem</button>
@@ -187,14 +229,20 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p id="footer-copyright">&copy; 2024 Azam Usman. Todos os direitos reservados.</p>
+        <p id="footer-copyright">
+          &copy; 2024 Azam Usman. Todos os direitos reservados.
+        </p>
         <p>Desenvolvido com paixão e excelência técnica.</p>
       </div>
     </footer>
 
     <!-- Botão voltar ao topo -->
     <button id="back-to-top" aria-label="Voltar ao topo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
         <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" />
       </svg>
     </button>
@@ -213,8 +261,20 @@
             <p class="modal-description"></p>
             <div class="modal-tech-list"></div>
             <div class="modal-buttons">
-              <a href="#" class="btn modal-btn-primary" target="_blank" rel="noopener">Visitar Site</a>
-              <a href="#" class="btn modal-btn-secondary" target="_blank" rel="noopener">Ver no GitHub</a>
+              <a
+                href="#"
+                class="btn modal-btn-primary"
+                target="_blank"
+                rel="noopener"
+                >Visitar Site</a
+              >
+              <a
+                href="#"
+                class="btn modal-btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Ver no GitHub</a
+              >
             </div>
           </div>
         </div>

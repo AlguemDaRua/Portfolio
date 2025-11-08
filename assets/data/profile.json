@@ -37,9 +37,9 @@
     "title": "Contacto",
     "description": "Para propostas de colaboração ou esclarecimentos adicionais, envie a sua mensagem.",
     "emailjs": {
-      "publicKey": "0I9u8gF_tTbJuC-EI",
-      "serviceId": "myomg",
-      "templateId": "template"
+      "publicKey": "Z5xTfBpKkerQgQ8Uc",
+      "serviceId": "myomg_port",
+      "templateId": "template_port"
     }
   }
 }

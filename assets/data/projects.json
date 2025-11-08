@@ -6,12 +6,14 @@
       "category": "web",
       "categoryLabel": "Desenvolvimento Web",
       "shortDescription": "Solução completa de comércio electrónico com carrinho de compras e integração de pagamentos.",
-      "fullDescription": "Desenvolvimento de uma plataforma de comércio eletrónico de ponta. A aplicação apresenta uma interface de utilizador responsiva, um carrinho de compras funcional, gestão de produtos, integração de gateways de pagamento e um painel de administração para gestão de stock e pedidos.",
+      "fullDescription": "Desenvolvimento de uma plataforma de comércio eletrónico de ponta...",
       "technologies": ["React", "Node.js", "MongoDB", "Express", "Stripe API"],
       "image": "assets/images/projetos/web1.jpg",
       "liveUrl": "https://exemplo.com",
       "githubUrl": "https://github.com/seuusername/ecommerce",
-      "featured": true
+      "featured": true,
+      "status": "completed",
+      "statusLabel": "Concluído"
     },
     {
       "id": "parkwise",
@@ -19,12 +21,14 @@
       "category": "mobile",
       "categoryLabel": "Mobile",
       "shortDescription": "Aplicativo móvel para monitoramento e gestão de estacionamento em tempo real.",
-      "fullDescription": "O ParkWISE permite que os usuários encontrem vagas de estacionamento disponíveis, visualizem a ocupação em tempo real e paguem pelo estacionamento digitalmente. Utiliza Flutter para uma experiência fluida em iOS e Android.",
+      "fullDescription": "O ParkWISE permite que os usuários encontrem vagas...",
       "technologies": ["Flutter", "Firebase", "Dart", "Google Maps API"],
       "image": "assets/images/projetos/parkwise.png",
-      "liveUrl": "https://exemplo.com",
-      "githubUrl": "https://github.com/seuusername/parkwise",
-      "featured": true
+      "liveUrl": "https://play.google.com/parkwise",
+      "githubUrl": "",
+      "featured": true,
+      "status": "active",
+      "statusLabel": "Em Produção"
     },
     {
       "id": "auth-system",
@@ -32,12 +36,14 @@
       "category": "backend",
       "categoryLabel": "Backend",
       "shortDescription": "Sistema seguro de autenticação e autorização com múltiplos fatores.",
-      "fullDescription": "Sistema robusto para autenticação e autorização de utilizadores. Lida com registo, login, redefinição de palavra-passe e gestão de tokens. Projetado com Golang para alto desempenho.",
+      "fullDescription": "Sistema robusto para autenticação...",
       "technologies": ["Golang", "JWT", "PostgreSQL", "Docker", "REST API"],
       "image": "assets/images/projetos/backend1.jpg",
       "liveUrl": "",
       "githubUrl": "https://github.com/seuusername/auth-system",
-      "featured": false
+      "featured": false,
+      "status": "development",
+      "statusLabel": "Em Desenvolvimento"
     }
   ]
 }
