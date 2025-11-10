@@ -41,7 +41,7 @@
       "name": "Golang",
       "description": "Servidores de alto desempenho",
       "icon": "assets/icons/golang.svg",
-      "level": 75,
+      "level": 45,
       "category": "backend",
       "url": "https://golang.org/"
     },
@@ -50,7 +50,7 @@
       "name": "Java",
       "description": "Aplicações empresariais",
       "icon": "assets/icons/java.svg",
-      "level": 85,
+      "level": 95,
       "category": "backend",
       "url": "https://www.java.com/"
     },
@@ -64,20 +64,20 @@
       "url": "https://www.python.org/"
     },
     {
-      "id": "react",
-      "name": "React",
+      "id": "Angular",
+      "name": "Angular",
       "description": "Desenvolvimento de UI",
-      "icon": "assets/icons/react.svg",
-      "level": 82,
+      "icon": "assets/icons/angular.svg",
+      "level": 10,
       "category": "frontend",
-      "url": "https://react.dev/"
+      "url": "https://angular.dev/"
     },
     {
       "id": "nodejs",
       "name": "Node.js",
       "description": "JavaScript no servidor",
       "icon": "assets/icons/nodejs.svg",
-      "level": 78,
+      "level": 36,
       "category": "backend",
       "url": "https://nodejs.org/"
     }

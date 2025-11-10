@@ -1,0 +1,42 @@
+{
+      "id": "skill-unica",
+      "name": "Nome da Tecnologia",
+      "description": "Breve descrição",
+      "icon": "assets/icons/tech.svg",
+      "level": 85,      
+      "category": "frontend",
+      "url": "https://..."
+}
+
+
+
+
+{
+      "// TEMPLATE DE SKILL - COPIAR E PREENCHER": "======================",
+      "// Campos obrigatórios estão marcados com *": "",
+      
+      "id": "skill-unica",              // * ID único (sem espaços, use hífens)
+      "name": "Nome da Tecnologia",     // * Nome que aparece no card
+      "description": "Breve descrição",  // * Descrição curta (máx 50 caracteres)
+      
+      "icon": "assets/icons/tech.svg",  // * Caminho do ícone SVG
+      
+      "level": 85,                      // Nível de conhecimento (0-100)
+                                        // 0-30: Iniciante
+                                        // 31-60: Intermediário
+                                        // 61-85: Avançado
+                                        // 86-100: Expert
+                                        // null ou omitir: Não mostra barra
+      
+      "category": "frontend",           // * Categoria da skill
+                                        // Opções:
+                                        // "frontend" = Borda azul clara
+                                        // "backend" = Borda azul escura
+                                        // "mobile" = Borda rosa
+                                        // "devops" = Borda verde
+                                        // "tools" = Sem borda especial
+                                        // "database" = Sem borda especial
+                                        // "other" = Sem borda especial
+      
+      "url": "https://..."              // * Link para documentação oficial
+    },

@@ -1,10 +1,10 @@
 {
   "name": "Azam Usman",
-  "title": "Software Developer",
-  "tagline": "Desenvolvedor Full Stack | Especialista em Soluções Tecnológicas",
-  "heroTitle": "Transformando Ideias em Realidade Digital",
+  "title": "Engenheiro Informático & Telecomunicações",
+  "tagline": "Desenvolvedor Full Stack | Desenvolvedor Mobile | Entusiasta de Tecnologia",
+  "heroTitle": "Vamos Construir Algo Incrível Juntos",
   "about": {
-    "bio": "Saudações! Sou <strong>Azam Usman</strong>, profissional especializado em desenvolvimento de software com mais de 5 anos de experiência. Minha paixão é criar soluções digitais eficientes que resolvem problemas reais.",
+    "bio": "Saudações! Sou <strong>Azam Usman</strong>, Estudante de Engenharia Informática e Telecomunicações na <strong>ISUTC</strong>. Com uma paixão por tecnologia e inovação, estou constantemente a explorar novas fronteiras no desenvolvimento de software. Tenho experiência em <strong>desenvolvimento web</strong>, <strong>desenvolvimento mobile</strong> e <strong>programação em várias linguagens</strong>. Estou entusiasmado por contribuir para projetos que façam a diferença e por colaborar com profissionais que partilham a minha visão.",
     "profileImage": "assets/images/profile/meuperfil.jpg",
     "cvs": [
       {
@@ -19,7 +19,8 @@
       }
     ],
     "competencies": [
-      "Desenvolvimento Web (HTML5, CSS3, JavaScript)",
+      "Desenvolvimento Web Basico(HTML5, CSS3, JavaScript)",
+      "Desenvolvimento Web Avancado(Angular, Tailwind, NodeJS)",
       "Desenvolvimento Mobile com Flutter",
       "Java para aplicações empresariais",
       "Python para análise de dados e automação",
@@ -28,9 +29,8 @@
   },
   "social": {
     "github": "https://github.com/AlguemDaRua",
-    "linkedin": "https://linkedin.com/in/seuusername",
+    "linkedin": "https://www.linkedin.com/in/azam-usman-57b227299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "https://twitter.com/AlguemDaRua",
-    "facebook": "https://facebook.com/seuusername",
     "email": "myomgomg2@gmail.com"
   },
   "contact": {

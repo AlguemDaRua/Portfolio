@@ -1,0 +1,64 @@
+Isto e template
+
+
+
+{
+    "id": "",           
+      "title": "",     
+      "category": "",              
+      "categoryLabel": "",          
+      "shortDescription": "...",       
+      "fullDescription": "...",        
+      "technologies": [],
+      "image": "assets/images/...",   
+      "liveUrl": "https://...",       
+      "githubUrl": "https://...",     
+      "featured": false,                
+      "status": "",                     
+      "statusLabel": ""                 
+}
+
+
+
+
+
+"// TEMPLATE DE PROJETO - COPIAR E PREENCHER": "======================",
+      "// Campos obrigatórios estão marcados com *": "",
+      
+      "id": "projeto-unico",           // * ID único (sem espaços, use hífens)
+      "title": "Nome do Projeto",      // * Título que aparece no card
+      "category": "web",                // * Categoria (define o filtro)
+                                        // Opções: web, mobile, backend, frontend, 
+                                        // fullstack, desktop, api, devops, ai, 
+                                        // blockchain, iot, game, outros...
+                                        
+      "categoryLabel": "Web",          // * Label amigável da categoria
+      
+      "shortDescription": "...",       // * Descrição curta (máx 100 caracteres)
+      "fullDescription": "...",        // * Descrição completa para o modal
+      
+      "technologies": [                // * Array de tecnologias usadas
+        "HTML",                        // Máximo recomendado: 6-8 tecnologias
+        "CSS",                         // As primeiras 4 aparecem no card
+        "JavaScript"                   // Resto aparece como "+X" no card
+      ],
+      
+      "image": "assets/images/...",    // * Caminho da imagem (recomendado: 600x400px)
+      
+      "liveUrl": "https://...",        // URL do site (deixar "" se não tiver)
+      "githubUrl": "https://...",      // URL do GitHub (deixar "" se não tiver)
+      
+      "featured": false,                // true = Destaque com borda azul
+                                        // false = Card normal
+      
+      "status": "",                     // Status do projeto (opcional)
+                                        // Opções:
+                                        // "completed" = Concluído (verde)
+                                        // "active" = Em produção (azul)
+                                        // "development" = Em desenvolvimento (laranja)
+                                        // "paused" = Pausado (cinza)
+                                        // "" = Não mostrar status
+      
+      "statusLabel": ""                 // Label customizado do status
+                                        // Ex: "Em Construção", "Beta", "v2.0"
+    },
